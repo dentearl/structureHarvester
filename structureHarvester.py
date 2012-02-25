@@ -1,10 +1,10 @@
 #!/usr/bin/env python2.6
-""" structureHarvester version 0.6.9
+""" structureHarvester
+2007-2012
 dent earl, dearl (a) soe ucsc edu
-Dec 2011
 
-http://users.soe.ucsc.edu/~dearl/software/struct_harvest/
-http://taylor0.biology.ucla.edu/struct_harvest/
+http://users.soe.ucsc.edu/~dearl/software/structureHarvester/
+http://taylor0.biology.ucla.edu/structureHarvester/
 
 ##############################
 CITATION

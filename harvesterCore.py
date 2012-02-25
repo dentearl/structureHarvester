@@ -5,8 +5,8 @@ March 2012
 Functions shared between the web and stand-alone versions
 of Structure Harvester.
 
-http://users.soe.ucsc.edu/~dearl/software/struct_harvest/
-http://taylor0.biology.ucla.edu/struct_harvest/
+http://users.soe.ucsc.edu/~dearl/software/structureHarvester/
+http://taylor0.biology.ucla.edu/structureHarvester/
 
 ##############################
 CITATION
