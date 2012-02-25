@@ -27,3 +27,14 @@
       --out=OUTDIR      The out directory. If it does not exist, it will be created. Output written to summary.txt
       --evanno          If possible, performs the Evanno 2005 method. Written to evanno.txt. default=False
       --clumpp          Generates one K*.indfile for each value of K run, for use with CLUMPP. default=False
+
+## References
+* J. Pritchard, M. Stephens, P. Donnelly. 2000. Genetics 155:945-959. http://pritch.bsd.uchicago.edu/structure.html http://www.genetics.org/cgi/content/full/155/2/945
+* Evanno et al., 2005. Detecting the number of clusters of individuals using the software STRUCTURE: a simulation study. Molecular Ecology 14 , 2611 - 2620 http://www3.interscience.wiley.com/journal/118706173/abstract
+* M. Jakobsson, N. Rosenberg 2007. CLUMPP: a cluster matching and permutation program for dealing with label switching and multimodality in analysis of population structure. Bioinformatics 23(14): 1801-1806. http://rosenberglab.bioinformatics.med.umich.edu/clumpp.html http://bioinformatics.oxfordjournals.org/cgi/content/full/23/14/1801
+
+## Citation
+    Earl, Dent A. and vonHoldt, Bridgett M. (2011)                
+    STRUCTURE HARVESTER: a website and program for visualizing    
+    STRUCTURE output and implementing the Evanno method.          
+    Conservation Genetics Resources DOI: 10.1007/s12686-011-9548-7
