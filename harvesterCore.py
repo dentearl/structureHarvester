@@ -299,7 +299,8 @@ def clumppGeneration(inputDir, outputDir, data, failToSummary, isWeb=False):
                                              regex3, lineno, line, data.uniqueName), data)
                         else:
                             failToSummary('Error, clumpp generation for %s failed '
-                                          'to match with regexs:\n  "%s",\n  "%s",\n  "%s"\non line number %d: %s\n'
+                                          'to match with any of the regular expressions:\n  "%s",\n  '
+                                          '"%s",\n  "%s"\non line number %d: %s\n'
                                           % (r.name, regex1, regex2, regex3, lineno, line))
                     else:
                         if m1 != None:
@@ -353,9 +354,10 @@ def clumppPopFile(inputDir, outputDir, data, failToSummary, isWeb=False):
                     if m1 == None:
                         if isWeb:
                             failToSummary('Error, clumpp popfile generation failed', 
-                                          'Your file %s has unexpected line structure!\n'
+                                          'Your file <strong>%s</strong> has unexpected line structure!\n'
                                           'Job %s failed '
-                                          'to match regex\n<pre>%s</pre>\n<p>on line number %d:\n<pre>%s</pre>\n'
+                                          'to match the regular expression:\n<pre>%s</pre>\n'
+                                          '<p>on line number %d:\n<pre>%s</pre>\n'
                                           'Please verify your input file\'s characters '
                                           'and try again after making the correction.'
                                           % (r.name, data.uniqueName, regex1, lineno, line), data)
@@ -363,7 +365,7 @@ def clumppPopFile(inputDir, outputDir, data, failToSummary, isWeb=False):
                             failToSummary('Error, clumpp popfile generation failed\n'
                                           'Your file %s has unexpected line structure!\n'
                                           'Job failed '
-                                          'to match regex\n%s\non this line:\n%s\n'
+                                          'to match the regular expression:\n%s\non this line:\n%s\n'
                                           'Please verify your input file\'s characters '
                                           'and try again after making the correction.\n\n' %
                                           (r.name, regex1, line))                          
