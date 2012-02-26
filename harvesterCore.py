@@ -76,7 +76,6 @@ class Data:
         self.LnPK            = None
         self.LnPPK           = None
         self.deltaK          = None
-        self.deltaK2         = None
 
 class RunRecord:
     """ Stores the output of a single structure run.
@@ -463,11 +462,21 @@ def calculateMeansAndSds(data):
             data.estLnProbStdevs[k] = math.sqrt(data.estLnProbStdevs[k])
 
 def calculatePrimesDoublePrimesDeltaK(data):
+    """ This function takes in the data object and uses the
+    estimated log probability means dictionary (data.estLnProbMeans) and the estimated
+    log probability standard deviations dictionary (data.estLnProbStdevs) to
+    calculate dictionaries keyed on K values (ints) for the three Evanno quantities of 
+    interest:
+    L'(K) : data.LnPK 
+    L''(K) : data.LnPP(K)
+    delta K : data.deltaK
+    Note that to calculate the deltaK for 'thisK' you need estimated log prob mean 
+    values for both the previous K, 'prevK' and the next K, 'nextK'. So if you run 
+    Structure for K = 1..20, you'll only get delta K for K = 2..19.
+    """
     data.LnPK = {} 
     data.LnPPK = {}
     data.deltaK = {}
-    data.deltaK2 = {}
-    # This is the correct way:
     for i in xrange(1, len(data.sortedKs)):
         thisK = data.sortedKs[i]
         prevK = data.sortedKs[i - 1]
