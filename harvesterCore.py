@@ -290,8 +290,8 @@ def clumppGeneration(inputDir, outputDir, data, failToSummary, isWeb=False):
                             failToSummary('Error, clumpp generation failed',
                                           'Your file <strong>%s</strong> contains unexpected characters or formatting!\n'
                                           'Job %s failed '
-                                          'to match any of the following regular expressions: <ul><li><pre>"%s"</pre>,</li>'
-                                          '<li><pre>"%s"</pre>,</li><li><pre>"%s"</pre></li></ul>\n on line number %d:</p>\n <pre>%s</pre>\n'
+                                          'to match any of the following regular expressions: <ul><li><pre>"%s"</pre></li>'
+                                          '<li><pre>"%s"</pre></li><li><pre>"%s"</pre></li></ul>\n on line number %d:</p>\n <pre>%s</pre>\n'
                                           'Please verify your input file\'s characters '
                                           'and try again after making the correction.\n'
                                           'If you believe this is a bug you may email the author and mention job %s'
