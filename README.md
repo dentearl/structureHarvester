@@ -34,4 +34,4 @@
 * M. Jakobsson, N. Rosenberg 2007. CLUMPP: a cluster matching and permutation program for dealing with label switching and multimodality in analysis of population structure. Bioinformatics 23(14): 1801-1806. http://rosenberglab.bioinformatics.med.umich.edu/clumpp.html http://bioinformatics.oxfordjournals.org/cgi/content/full/23/14/1801
 
 ## Citation
-* Earl, Dent A. and vonHoldt, Bridgett M. (2011) STRUCTURE HARVESTER: a website and program for visualizing STRUCTURE output and implementing the Evanno method. Conservation Genetics Resources DOI: 10.1007/s12686-011-9548-7 http://www.springerlink.com/content/jnn011511h415358/
+* Earl, Dent A. and vonHoldt, Bridgett M. (2012) STRUCTURE HARVESTER: a website and program for visualizing STRUCTURE output and implementing the Evanno method. Conservation Genetics Resources vol. 4 (2) pp. 359-361. doi: 10.1007/s12686-011-9548-7 http://www.springerlink.com/content/jnn011511h415358/
