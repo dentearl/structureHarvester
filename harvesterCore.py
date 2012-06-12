@@ -343,8 +343,8 @@ def clumppPopFile(inputDir, outputDir, data, failToSummary, isWeb=False):
                     continue
                 if d[0] == 'Given' and d[1] == 'Inferred' and d[2] == 'Clusters':
                     printing = True
-                    f = open(os.path.join(outputDir, 'K%d.popfile' % k), 'a')
                     skipLine = True
+                    f = open(os.path.join(outputDir, 'K%d.popfile' % k), 'a')
                     continue
                 if skipLine == True:
                     skipLine = False

@@ -194,6 +194,7 @@ def main():
     hc.calculateMeansAndSds(data)
     if options.clumpp:
         hc.clumppGeneration(options.resultsDir, options.outDir, data, failHandler)
+        hc.clumppPopFile(options.resultsDir, options.outDir, data, failHandler)
     evannoMethod(data, options)
     hc.writeRawOutputToFile(os.path.join(options.outDir, 'summary.txt'), data)
 
