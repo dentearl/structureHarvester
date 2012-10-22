@@ -116,9 +116,8 @@ def harvestFiles(data, options):
             data.records[run.k].append(run)
         else:
             sys.stderr.write('Error, unable to extract results from file %s.\n' % f)
-            file.write(errorString);
-            file.close()
-            sys.exit(0)
+            sys.stderr.write('%s\n' % errorString)
+            sys.exit(1)
     data.sortedKs = data.records.keys()
     data.sortedKs.sort()
 
