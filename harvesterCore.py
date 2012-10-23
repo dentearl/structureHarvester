@@ -10,10 +10,10 @@ http://taylor0.biology.ucla.edu/structureHarvester/
 
 ##############################
 CITATION
-Earl, Dent A. and vonHoldt, Bridgett M. (2011)
-STRUCTURE HARVESTER: a website and program for visualizing
-STRUCTURE output and implementing the Evanno method.
-Conservation Genetics Resources DOI: 10.1007/s12686-011-9548-7
+Earl, Dent A. and vonHoldt, Bridgett M. (2012)                
+STRUCTURE HARVESTER: a website and program for visualizing    
+STRUCTURE output and implementing the Evanno method. 
+Conservation Genetics Resources 4(2) 359-361. DOI: 10.1007/s12686-011-9548-7
 
 ##############################
 REFERENCES
@@ -76,7 +76,6 @@ class Data:
         self.LnPK            = None
         self.LnPPK           = None
         self.deltaK          = None
-
 class RunRecord:
     """ Stores the output of a single structure run.
     """
@@ -91,7 +90,6 @@ class RunRecord:
         self.meanLlh   = -1
         self.varLlh    = -1
         self.runNumber = -1
-
 def addAttribute(p, value, run, data, badValue):
     """ add a particular attribute to the run object. p is a string with the type
     value is a string that contains the value to add, run is the run object, data
@@ -146,7 +144,6 @@ def addAttribute(p, value, run, data, badValue):
             badValue(run.name, 'Variance of ln likelihood', value, data)
     else:
         sys.stderr.write('Error, %s unknown pattern type %s\n' % (data.uniqueName, p))
-
 def validateRecord(run):
     """ validateRecord checks the run object to make sure it contains all necessary
     information. If the run is valid it returns the run, else it returns None.
@@ -164,17 +161,16 @@ def validateRecord(run):
                            % (run.name, dataNames[i]))
             return None, errorString
     return run, errorString
-
 def writeRawOutputToFile(filename, data):
     file = open(filename, 'w')
     file.write('# This document produced by structureHarvester core version %s\n' % __version__)
     file.write('# http://users.soe.ucsc.edu/~dearl/struct_harvest\n')
     file.write('# http://taylor0.biology.ucla.edu/structureHarvester\n')
     file.write('# Written by Dent Earl, dearl (a) soe ucsc edu.\n')
-    file.write('# CITATION:\n# Earl, Dent A. and vonHoldt, Bridgett M. (2011)\n'
+    file.write('# CITATION:\n# Earl, Dent A. and vonHoldt, Bridgett M. (2012)\n'
                '# STRUCTURE HARVESTER: a website and program for visualizing\n'
                '# STRUCTURE output and implementing the Evanno method.\n'
-               '# Conservation Genetics Resources DOI: 10.1007/s12686-011-9548-7\n'
+               '# Conservation Genetics Resources 4(2) 359-361. DOI: 10.1007/s12686-011-9548-7\n'
                '# Core version: %s\n'
                % __version__)
     file.write('# File generated at %s\n' % (time.strftime('%Y-%b-%d %H:%M:%S %Z', time.localtime())))
@@ -183,7 +179,6 @@ def writeRawOutputToFile(filename, data):
     file.write('# K\tReps\t'
                 'mean est. LnP(Data)\t'
                 'stdev est. LnP(Data)\n')
-
     for i in xrange(0, len(data.sortedKs)):
         k = data.sortedKs[i]
         file.write('%d\t%d\t%f\t%f\n' % (k, len(data.records[k]), data.estLnProbMeans[k],
@@ -193,7 +188,6 @@ def writeRawOutputToFile(filename, data):
                'K\tEst. Ln prob. of data\t'
                'Mean value of Ln likelihood\t'
                'Variance of Ln likelihood\n')
-
     for k in data.records:
         for r in data.records[k]:
             if r.runNumber != -1:
@@ -204,13 +198,12 @@ def writeRawOutputToFile(filename, data):
                                                             r.meanLlh, r.varLlh))
     file.write('\nSoftware written by Dent Earl while at EEB Dept, UCLA, BME Dept UCSC\n'
                'dearl (a) soe ucsc edu\n')
-    file.write('CITATION:\nEarl, Dent A. and vonHoldt, Bridgett M. (2011)\n'
+    file.write('CITATION:\nEarl, Dent A. and vonHoldt, Bridgett M. (2012)\n'
                'STRUCTURE HARVESTER: a website and program for visualizing\n'
                'STRUCTURE output and implementing the Evanno method.\n'
-               'Conservation Genetics Resources DOI: 10.1007/s12686-011-9548-7\n'
+               '# Conservation Genetics Resources 4(2) 359-361. DOI: 10.1007/s12686-011-9548-7\n'
                'Core version: %s' % __version__)
     file.close()
-
 def readFile(filename, data, badValue):
     run = RunRecord()
     run.name = os.path.basename(filename)
@@ -242,7 +235,6 @@ def readFile(filename, data, badValue):
                 if p == 'varln':
                     isDone = True
     return validateRecord(run)
-
 def clumppGeneration(inputDir, outputDir, data, failToSummary, isWeb=False):
     regex1 = r'''^(\d+) # individual number
                  \s+(\S+) # Label
@@ -315,7 +307,6 @@ def clumppGeneration(inputDir, outputDir, data, failToSummary, isWeb=False):
                             
             f.write('\n')
         f.close()
-
 def clumppPopFile(inputDir, outputDir, data, failToSummary, isWeb=False):
     regex1 = r'''^(\d+): # Given Pop
                  \s+([\d. ]*?) # All Inferred Cluster columns
@@ -378,7 +369,6 @@ def clumppPopFile(inputDir, outputDir, data, failToSummary, isWeb=False):
                 f.write('\n')
                 f.close()
                 f = None
-
 def evannoTests(data, isWeb=False):
     """ sucess returns None, failure returns
     a string which can be directly printed in to the output.
@@ -420,14 +410,12 @@ def evannoTests(data, isWeb=False):
                 out += '%d%s' % (k, spacer)
             prevK = k
         out += '</p>\n'
-
     # Number of replicates must be greater than 2 (stdev)
     if numReps > 1:
         out += '<p style="color:gray;">Test: The number of replicates per K > 1. PASS</p>\n'
     else:
         fail = True
         out += '<p style="color:red;">Test: The number of replicates per K > 1. FAIL</p>\n'
-
     # Standard Devation for a K (but not the first or last K) is zero
     for i in xrange(1, len(data.sortedKs) - 1):
         k = data.sortedKs[i]
@@ -447,7 +435,6 @@ def evannoTests(data, isWeb=False):
             re.sub('&[^&]+?;', '', out)
             return re.sub('<[^<]+?>', '', out)
     return None
-
 def calculateMeansAndSds(data):
     data.estLnProbMeans = {}
     data.estLnProbStdevs = {}
@@ -462,7 +449,6 @@ def calculateMeansAndSds(data):
                 data.estLnProbStdevs[k] += (r.estLnProb - data.estLnProbMeans[k]) ** 2
             data.estLnProbStdevs[k] /= (len(data.records[k]) - 1)
             data.estLnProbStdevs[k] = math.sqrt(data.estLnProbStdevs[k])
-
 def calculatePrimesDoublePrimesDeltaK(data):
     """ This function takes in the data object and uses the
     estimated log probability means dictionary (data.estLnProbMeans) and the estimated

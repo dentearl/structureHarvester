@@ -8,10 +8,10 @@ http://taylor0.biology.ucla.edu/structureHarvester/
 
 ##############################
 CITATION
-Earl, Dent A. and vonHoldt, Bridgett M. (2011)                
+Earl, Dent A. and vonHoldt, Bridgett M. (2012)                
 STRUCTURE HARVESTER: a website and program for visualizing    
-STRUCTURE output and implementing the Evanno method.          
-Conservation Genetics Resources DOI: 10.1007/s12686-011-9548-7
+STRUCTURE output and implementing the Evanno method. 
+Conservation Genetics Resources 4(2) 359-361. DOI: 10.1007/s12686-011-9548-7
 
 ##############################
 REFERENCES
@@ -77,7 +77,6 @@ def initOptions(parser):
                      help='If possible, performs the Evanno 2005 method. Written to evanno.txt. default=%default')
    parser.add_option('--clumpp',dest='clumpp', action='store_true', default=False,
                      help='Generates one K*.indfile for each value of K run, for use with CLUMPP. default=%default')
-
 def checkOptions(parser, options):
    if not options.resultsDir:
        parser.error('Error, specify --dir \n')
@@ -92,7 +91,6 @@ def checkOptions(parser, options):
        parser.error('Error, --out %s already exists but is not a directory!\n' % options.outDir)
    if not os.path.exists(options.outDir):
        os.mkdir(options.outDir)
-
 def badValue(filename, valuename, value, data):
     sys.stderr.write('Error: %s contains an unexpected value:\n'
                      '    %s = %s\n'
@@ -120,7 +118,6 @@ def harvestFiles(data, options):
             sys.exit(1)
     data.sortedKs = data.records.keys()
     data.sortedKs.sort()
-
 def evannoMethod(data, options):
     if not options.evanno:
         return
@@ -131,17 +128,16 @@ def evannoMethod(data, options):
         sys.exit(1)
     hc.calculatePrimesDoublePrimesDeltaK(data)
     writeEvannoTableToFile(data, options)
-
 def writeEvannoTableToFile(data, options):
     file = open(os.path.join(options.outDir, 'evanno.txt'), 'w')
     file.write('# This document produced by structureHarvester.py %s core %s\n' % (__version__, hc.__version__))
     file.write('# http://users.soe.ucsc.edu/~dearl/struct_harvest\n')
     file.write('# http://taylor0.biology.ucla.edu/struct_harvest\n')
     file.write('# Written by Dent Earl, dearl (a) soe ucsc edu.\n')
-    file.write('# CITATION:\n# Earl, Dent A. and vonHoldt, Bridgett M. (2011)\n'
+    file.write('# CITATION:\n# Earl, Dent A. and vonHoldt, Bridgett M. (2012)\n'
                '# STRUCTURE HARVESTER: a website and program for visualizing\n'
                '# STRUCTURE output and implementing the Evanno method.\n'
-               '# Conservation Genetics Resources DOI: 10.1007/s12686-011-9548-7\n'
+               '# Conservation Genetics Resources 4(2) 359-361. DOI: 10.1007/s12686-011-9548-7\n'
                '# Stand-alone version: %s\n'
                '# Core version: %s\n'
                % (__version__, hc.__version__))
@@ -172,11 +168,9 @@ def writeEvannoTableToFile(data, options):
                                       data.estLnProbStdevs[k],
                                       LnPKstr, LnPPKstr, deltaKstr))
     file.close()
-
 def failHandler(message):
     sys.stderr.write(message)
     sys.exit(1)
-
 def main():
     usage = ('usage: %prog --dir=path/to/dir/ --out=path/to/dir/ [options]\n\n'
               '%prog takes a STRUCTURE results directory (--dir) and an\n'
@@ -188,7 +182,6 @@ def main():
     initOptions(parser)
     (options, args) = parser.parse_args()
     checkOptions(parser, options)
-
     harvestFiles(data, options)
     hc.calculateMeansAndSds(data)
     if options.clumpp:
