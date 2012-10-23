@@ -59,7 +59,7 @@ import re
 import sys
 import time
 
-__version__ = 'v0.6.92 March 2012'
+__version__ = 'v0.6.93 October 2012'
 EPSILON = 0.0000001 # for determining if a stdev ~ 0
 
 try:
