@@ -30,7 +30,7 @@ Pritchard J., Stephens M., Donnelly. P. 2000. Genetics 155:945-959.
 ##############################
 LICENSE
 
-Copyright (C) 2007-2012 by
+Copyright (C) 2007-2013 by
 Dent Earl (dearl (a) soe ucsc edu, dentearl (a) gmail com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

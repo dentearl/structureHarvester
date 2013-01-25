@@ -1,6 +1,6 @@
 #!/usr/bin/env python2.6
 """ structureHarvester
-2007-2012
+2007-2013
 dent earl, dearl (a) soe ucsc edu
 
 http://users.soe.ucsc.edu/~dearl/software/structureHarvester/
@@ -29,7 +29,7 @@ Pritchard J., Stephens M., Donnelly. P. 2000. Genetics 155:945-959.
 ##############################
 LICENSE
 
-Copyright (C) 2007-2012 by 
+Copyright (C) 2007-2013 by 
 Dent Earl (dearl@soe.ucsc.edu, dentearl@gmail.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
