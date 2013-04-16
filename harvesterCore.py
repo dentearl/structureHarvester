@@ -156,7 +156,7 @@ def validateRecord(run):
                            run.estLnProb, run.meanLlh, run.varLlh]):
         if r == -1:
             errorString = ('StructureHarvester: In file %s, unable to read value for %s\n'
-                           'This can be caused by forgetting to check the box "Compute the' 
+                           'This can be caused by forgetting to check the box "Compute the ' 
                            'probability of the data (for estimating K)" in STRUCTURE.\n'
                            % (run.name, dataNames[i]))
             return None, errorString
