@@ -64,7 +64,7 @@ class Data:
   """ Data will be used to store variables in a fashion
   that allows for easy access between functions.
   """
-def __init__(self):
+  def __init__(self):
     self.evanno          = False
     self.uniqueName      = ''
     self.records         = None
@@ -81,7 +81,7 @@ def __init__(self):
 class RunRecord:
   """ Stores the output of a single structure run.
   """
-def __init__(self):
+  def __init__(self):
     self.name      = ''
     self.k         = -1
     self.indivs    = -1
