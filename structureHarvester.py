@@ -68,6 +68,8 @@ except TypeError:
   raise ImportError('This script requires Python version 2.5 <= v < 3.0. '
             'This version %d.%d' % (sys.version_info[0], sys.version_info[1]))
 
+
+
 def initOptions(parser):
    parser.add_option('--dir',dest='resultsDir',
            type ='string', help='The structure Results/ directory.')
@@ -76,13 +78,27 @@ def initOptions(parser):
        help=('The out directory. If it does not exist, it will be created. '
              'Output written to summary.txt'))
    parser.add_option(
-       '--evanno',dest='evanno', action='store_true', default=False,
+       '--evanno',dest='evanno', action='store_true',
+
+default=False,
        help=('If possible, performs the Evanno 2005 method. '
-             'Written to evanno.txt. default=%default'))
+             'Written to evanno.txt.
+
+default=%
+
+default'))
    parser.add_option(
-       '--clumpp',dest='clumpp', action='store_true', default=False,
+       '--clumpp',dest='clumpp', action='store_true',
+
+default=False,
        help=('Generates one K*.indfile for each value of K run, '
-             'for use with CLUMPP. default=%default'))
+             'for use with CLUMPP.
+
+default=%
+
+default'))
+
+
 def checkOptions(parser, options):
    if not options.resultsDir:
      parser.error('Error, specify --dir \n')
@@ -98,6 +114,8 @@ def checkOptions(parser, options):
                   % options.outDir)
    if not os.path.exists(options.outDir):
      os.mkdir(options.outDir)
+
+
 def badValue(filename, valuename, value, data):
   sys.stderr.write('Error: %s contains an unexpected value:\n'
            '    %s = %s\n'
@@ -105,6 +123,8 @@ def badValue(filename, valuename, value, data):
            'and re-running STRUCTURE for this value of K.'
            % (filename, valuename, value))
   sys.exit(1)
+
+
 
 def harvestFiles(data, options):
   files = glob.glob(os.path.join(options.resultsDir, '*_f'))
@@ -125,6 +145,8 @@ def harvestFiles(data, options):
       sys.exit(1)
   data.sortedKs = data.records.keys()
   data.sortedKs.sort()
+
+
 def evannoMethod(data, options):
   if not options.evanno:
     return
@@ -136,6 +158,8 @@ def evannoMethod(data, options):
     sys.exit(1)
   hc.calculatePrimesDoublePrimesDeltaK(data)
   writeEvannoTableToFile(data, options)
+
+
 def writeEvannoTableToFile(data, options):
   file = open(os.path.join(options.outDir, 'evanno.txt'), 'w')
   file.write('# This document produced by structureHarvester.py %s core %s\n'
@@ -179,9 +203,13 @@ def writeEvannoTableToFile(data, options):
                     data.estLnProbStdevs[k],
                     LnPKstr, LnPPKstr, deltaKstr))
   file.close()
+
+
 def failHandler(message):
   sys.stderr.write(message)
   sys.exit(1)
+
+
 def main():
   usage = ('usage: %prog --dir=path/to/dir/ --out=path/to/dir/ [options]\n\n'
            '%prog takes a STRUCTURE results directory (--dir) and an\n'
