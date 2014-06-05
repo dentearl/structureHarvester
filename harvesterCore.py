@@ -166,6 +166,7 @@ def writeRawOutputToFile(filename, data):
     file.write('# This document produced by structureHarvester core version %s\n' % __version__)
     file.write('# http://users.soe.ucsc.edu/~dearl/struct_harvest\n')
     file.write('# http://taylor0.biology.ucla.edu/structureHarvester\n')
+    file.write('# https://github.com/dentearl/structureHarvester\n')
     file.write('# Written by Dent Earl, dearl (a) soe ucsc edu.\n')
     file.write('# CITATION:\n# Earl, Dent A. and vonHoldt, Bridgett M. (2012)\n'
                '# STRUCTURE HARVESTER: a website and program for visualizing\n'
