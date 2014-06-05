@@ -208,8 +208,8 @@ def main():
            'directory and performs the selected analyses')
   data = hc.Data()
   parser = OptionParser(usage=usage,
-                        version='%prog %s core %s'
-                        % (__version__, +hc.__version__))
+                        version='%prog ' + '%s core %s'
+                        % (__version__, hc.__version__))
   initOptions(parser)
   (options, args) = parser.parse_args()
   checkOptions(parser, options)
