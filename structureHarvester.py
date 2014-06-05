@@ -8,19 +8,19 @@ http://taylor0.biology.ucla.edu/structureHarvester/
 
 ##############################
 CITATION
-Earl, Dent A. and vonHoldt, Bridgett M. (2012)                
-STRUCTURE HARVESTER: a website and program for visualizing    
-STRUCTURE output and implementing the Evanno method. 
+Earl, Dent A. and vonHoldt, Bridgett M. (2012)
+STRUCTURE HARVESTER: a website and program for visualizing
+STRUCTURE output and implementing the Evanno method.
 Conservation Genetics Resources 4(2) 359-361. DOI: 10.1007/s12686-011-9548-7
 
 ##############################
 REFERENCES
 
-Evanno et al., 2005.  Detecting the number of clusters of individuals using 
+Evanno et al., 2005.  Detecting the number of clusters of individuals using
   the software STRUCTURE: a simulation study. Molecular Ecology 14, 2611-2620.
 
-Jakobsson M., Rosenberg N. 2007. CLUMPP: a cluster matching and permutation 
-  program for dealing with label switching and multimodality in analysis 
+Jakobsson M., Rosenberg N. 2007. CLUMPP: a cluster matching and permutation
+  program for dealing with label switching and multimodality in analysis
   of population structure. Bioinformatics 23(14): 1801-1806.
 
 Pritchard J., Stephens M., Donnelly. P. 2000. Genetics 155:945-959.
@@ -29,7 +29,7 @@ Pritchard J., Stephens M., Donnelly. P. 2000. Genetics 155:945-959.
 ##############################
 LICENSE
 
-Copyright (C) 2007-2013 by 
+Copyright (C) 2007-2013 by
 Dent Earl (dearl@soe.ucsc.edu, dentearl@gmail.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -98,7 +98,7 @@ def badValue(filename, valuename, value, data):
                      're-running STRUCTURE for this value of K.'
                      % (filename, valuename, value))
     sys.exit(1)
-   
+
 def harvestFiles(data, options):
     files = glob.glob(os.path.join(options.resultsDir, '*_f'))
     if len(files) < 1:
