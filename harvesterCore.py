@@ -291,6 +291,26 @@ def clumppGeneration(inputDir, outputDir, data, failToSummary, isWeb=False):
         if line == '':
           printing = False
           continue
+        if line.startswith('Probability of being from assumed population | '):
+          if isWeb:
+            failToSummary(
+              'Error, clumpp generation failed',
+              'Your file <strong>%s</strong> shows STRUCTURE was '
+              'run using prior population information and it is not'
+              'clear how to convert htis into a stand alone Q matrix.\n'
+              'Job %s failed. '
+              'Please verify your input file\'s characters '
+              'and try again after making the correction.\n'
+              'If you believe this is a bug you may email the author '
+              'and mention job %s'
+              % (r.name, data.uniqueName, data.uniqueName), data)
+          else:
+            failToSummary(
+              'Error, clumpp generation for %s failed: '
+              'STRUCTURE was run using prior population information and '
+              'it is not clear how to convert this into a stand alone '
+              'Q matrix.\n'
+              % (r.name))
         d = line.split()
         if (d[0] == 'Label' and d[1] == '(%Miss)') or d[0] == '(%Miss)':
           printing = True
