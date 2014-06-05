@@ -66,8 +66,8 @@ try:
   eval("enumerate([1, 2, 3], 1)")
 except TypeError:
   raise ImportError('This script requires Python version 2.5 <= v < 3.0. '
-            'This version %d.%d' % (sys.version_info[0], sys.version_info[1]))
-
+                    'This version %d.%d'
+                    % (sys.version_info[0], sys.version_info[1]))
 
 
 def initOptions(parser):
@@ -78,25 +78,13 @@ def initOptions(parser):
        help=('The out directory. If it does not exist, it will be created. '
              'Output written to summary.txt'))
    parser.add_option(
-       '--evanno',dest='evanno', action='store_true',
-
-default=False,
+       '--evanno',dest='evanno', action='store_true', default=False,
        help=('If possible, performs the Evanno 2005 method. '
-             'Written to evanno.txt.
-
-default=%
-
-default'))
+             'Written to evanno.txt. default=%default'))
    parser.add_option(
-       '--clumpp',dest='clumpp', action='store_true',
-
-default=False,
+       '--clumpp',dest='clumpp', action='store_true', default=False,
        help=('Generates one K*.indfile for each value of K run, '
-             'for use with CLUMPP.
-
-default=%
-
-default'))
+             'for use with CLUMPP. default=%default'))
 
 
 def checkOptions(parser, options):
@@ -118,10 +106,10 @@ def checkOptions(parser, options):
 
 def badValue(filename, valuename, value, data):
   sys.stderr.write('Error: %s contains an unexpected value:\n'
-           '    %s = %s\n'
-           'Generally these problems can be resolved by discarding the file '
-           'and re-running STRUCTURE for this value of K.'
-           % (filename, valuename, value))
+                   '    %s = %s\n'
+                   'Generally these problems can be resolved by discarding the '
+                   'file and re-running STRUCTURE for this value of K.'
+                   % (filename, valuename, value))
   sys.exit(1)
 
 
@@ -180,8 +168,8 @@ def writeEvannoTableToFile(data, options):
   file.write('#\n')
   file.write('\n##########\n')
   file.write('# K\tReps\t'
-        'Mean LnP(K)\tStdev LnP(K)\t'
-        'Ln\'(K)\t|Ln\'\'(K)|\tDelta K\n')
+             'Mean LnP(K)\tStdev LnP(K)\t'
+             'Ln\'(K)\t|Ln\'\'(K)|\tDelta K\n')
   for i in xrange(0, len(data.sortedKs)):
     k = data.sortedKs[i]
     if k in data.LnPK:
@@ -197,11 +185,11 @@ def writeEvannoTableToFile(data, options):
     else:
       deltaKstr = 'NA'
     file.write('%d\t'
-          '%d\t%.4f\t%.4f\t'
-          '%s\t%s\t%s\n' % (k, len(data.records[k]),
-                    data.estLnProbMeans[k],
-                    data.estLnProbStdevs[k],
-                    LnPKstr, LnPPKstr, deltaKstr))
+               '%d\t%.4f\t'
+               '%.4f\t%s\t%s\t%s\n'
+               % (k,
+                  len(data.records[k]), data.estLnProbMeans[k],
+                  data.estLnProbStdevs[k], LnPKstr, LnPPKstr, deltaKstr))
   file.close()
 
 
