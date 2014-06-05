@@ -1,6 +1,6 @@
 #!/usr/bin/env python2.6
 """ structureHarvester
-2007-2013
+2007-2014
 dent earl, dearl (a) soe ucsc edu
 
 http://users.soe.ucsc.edu/~dearl/software/structureHarvester/
