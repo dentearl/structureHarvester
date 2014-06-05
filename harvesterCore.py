@@ -239,7 +239,8 @@ def readFile(filename, data, badValue):
             'k'      : r'^(\d+) populations assumed.*$',
             'burnin' : r'^(\d+) Burn\-in period.*$',
             'reps'   : r'^(\d+) Reps.*$',
-            'lnprob' : r'^Estimated Ln Prob of Data\s+=\s+([\d.$nainf-]+).*$', # nan, inf
+            # nan, inf
+            'lnprob' : r'^Estimated Ln Prob of Data\s+=\s+([\d.$nainf-]+).*$',
             'meanln' : r'^Mean value of ln likelihood\s+=\s+([\d.$nainf-]+).*$',
             'varln'  : r'^Variance of ln likelihood\s+=\s+([\d.$nainf-]+).*$',
             }
