@@ -10,9 +10,9 @@ http://taylor0.biology.ucla.edu/structureHarvester/
 
 ##############################
 CITATION
-Earl, Dent A. and vonHoldt, Bridgett M. (2012)                
-STRUCTURE HARVESTER: a website and program for visualizing    
-STRUCTURE output and implementing the Evanno method. 
+Earl, Dent A. and vonHoldt, Bridgett M. (2012)
+STRUCTURE HARVESTER: a website and program for visualizing
+STRUCTURE output and implementing the Evanno method.
 Conservation Genetics Resources 4(2) 359-361. DOI: 10.1007/s12686-011-9548-7
 
 ##############################
@@ -93,9 +93,9 @@ class RunRecord:
 def addAttribute(p, value, run, data, badValue):
     """ add a particular attribute to the run object. p is a string with the type
     value is a string that contains the value to add, run is the run object, data
-    is the data object and badValue is a function that takes the run name, the 
+    is the data object and badValue is a function that takes the run name, the
     bad value's string name, the value, and the data object.
-    """ 
+    """
     if p == 'indivs':
         try:
             run.indivs = int(value)
@@ -156,7 +156,7 @@ def validateRecord(run):
                            run.estLnProb, run.meanLlh, run.varLlh]):
         if r == -1:
             errorString = ('StructureHarvester: In file %s, unable to read value for %s\n'
-                           'This can be caused by forgetting to check the box "Compute the ' 
+                           'This can be caused by forgetting to check the box "Compute the '
                            'probability of the data (for estimating K)" in STRUCTURE.\n'
                            % (run.name, dataNames[i]))
             return None, errorString
@@ -305,7 +305,7 @@ def clumppGeneration(inputDir, outputDir, data, failToSummary, isWeb=False):
                         elif m3 != None:
                             f.write('%3d %3d %s 1 : %s\n' % (int(m3.group(1)), int(m3.group(1)),
                                                              m3.group(2), m3.group(3)))
-                            
+
             f.write('\n')
         f.close()
 def clumppPopFile(inputDir, outputDir, data, failToSummary, isWeb=False):
@@ -313,7 +313,7 @@ def clumppPopFile(inputDir, outputDir, data, failToSummary, isWeb=False):
                  \s+([\d. ]*?) # All Inferred Cluster columns
                  \s+(\d+)$ # # Number of Individuals'''
     pats = []
-    f = None 
+    f = None
     for r in [regex1]:
         pats.append(re.compile(r, re.X))
     for k in data.sortedKs:
@@ -345,7 +345,7 @@ def clumppPopFile(inputDir, outputDir, data, failToSummary, isWeb=False):
                     m1 = re.match(pats[0], line)
                     if m1 == None:
                         if isWeb:
-                            failToSummary('Error, clumpp popfile generation failed', 
+                            failToSummary('Error, clumpp popfile generation failed',
                                           'Your file <strong>%s</strong> has unexpected line structure!\n'
                                           'Job %s failed '
                                           'to match the regular expression:\n<pre>%s</pre>\n'
@@ -360,7 +360,7 @@ def clumppPopFile(inputDir, outputDir, data, failToSummary, isWeb=False):
                                           'to match the regular expression:\n%s\non this line:\n%s\n'
                                           'Please verify your input file\'s characters '
                                           'and try again after making the correction.\n\n' %
-                                          (r.name, regex1, line))                          
+                                          (r.name, regex1, line))
                     else:
                         f.write('%3d:' % (int(m1.group(1))))
                         for i in xrange(2, len(m1.groups()) + 1):
@@ -389,7 +389,7 @@ def evannoTests(data, isWeb=False):
     else:
         fail = True
         out += '<p style="color:red;">Test: You must test at least 3 values of K. FAIL</p>\n'
-    
+
     # K values must be sequential
     if ((data.sortedKs[-1] + 1) - data.sortedKs[0]) == len(data.sortedKs):
         out += '<p style="color:gray;">Test: K values must be sequential. PASS</p>\n'
@@ -454,16 +454,16 @@ def calculatePrimesDoublePrimesDeltaK(data):
     """ This function takes in the data object and uses the
     estimated log probability means dictionary (data.estLnProbMeans) and the estimated
     log probability standard deviations dictionary (data.estLnProbStdevs) to
-    calculate dictionaries keyed on K values (ints) for the three Evanno quantities of 
+    calculate dictionaries keyed on K values (ints) for the three Evanno quantities of
     interest:
-    L'(K) : data.LnPK 
+    L'(K) : data.LnPK
     L''(K) : data.LnPP(K)
     delta K : data.deltaK
-    Note that to calculate the deltaK for 'thisK' you need estimated log prob mean 
-    values for both the previous K, 'prevK' and the next K, 'nextK'. So if you run 
+    Note that to calculate the deltaK for 'thisK' you need estimated log prob mean
+    values for both the previous K, 'prevK' and the next K, 'nextK'. So if you run
     Structure for K = 1..20, you'll only get delta K for K = 2..19.
     """
-    data.LnPK = {} 
+    data.LnPK = {}
     data.LnPPK = {}
     data.deltaK = {}
     for i in xrange(1, len(data.sortedKs)):
