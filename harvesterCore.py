@@ -296,7 +296,7 @@ def clumppGeneration(inputDir, outputDir, data, failToSummary, isWeb=False):
             failToSummary(
               'Error, clumpp generation failed',
               'Your file <strong>%s</strong> shows STRUCTURE was '
-              'run using prior population information and it is not'
+              'run using prior population information and it is not '
               'clear how to convert htis into a stand alone Q matrix.\n'
               'Job %s failed. '
               'Please verify your input file\'s characters '
