@@ -324,7 +324,7 @@ def clumppGeneration(inputDir, outputDir, data, failToSummary, isWeb=False):
           m1 = re.match(pats[0], line)
           m2 = re.match(pats[1], line)
           m3 = re.match(pats[2], line)
-          if m1 == None and m2 == None and m3 == None:
+          if m1 is None and m2 is None and m3 is None:
             if isWeb:
               failToSummary(
                   'Error, clumpp generation failed',
@@ -383,7 +383,7 @@ def clumppPopFile(inputDir, outputDir, data, failToSummary, isWeb=False):
           continue
         line = line.strip()
         d = line.split()
-        if printing == True and line.startswith('--------------------'):
+        if printing and line.startswith('--------------------'):
           workComplete = True
           printing = False
           continue
@@ -394,12 +394,12 @@ def clumppPopFile(inputDir, outputDir, data, failToSummary, isWeb=False):
           skipLine = True
           f = open(os.path.join(outputDir, 'K%d.popfile' % k), 'a')
           continue
-        if skipLine == True:
+        if skipLine:
           skipLine = False
           continue
-        if printing == True:
+        if printing:
           m1 = re.match(pats[0], line)
-          if m1 == None:
+          if m1 is None:
             if isWeb:
               failToSummary(
                   'Error, clumpp popfile generation failed',
@@ -502,7 +502,7 @@ def evannoTests(data, isWeb=False):
               'replicates to hopefully increase the standard deviation for '
               'that value of '
               ' K.)</p>\n' % (k, EPSILON))
-  if fail == True:
+  if fail:
     if isWeb:
       return out
     else:
