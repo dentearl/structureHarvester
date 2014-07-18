@@ -59,8 +59,9 @@ import re
 import sys
 import time
 
-__version__ = 'v0.6.93 October 2012'
+__version__ = 'v0.6.94 July 2014'
 EPSILON = 0.0000001 # for determining if a stdev ~ 0
+
 
 try:
   eval("enumerate([1, 2, 3], 1)")
@@ -104,14 +105,40 @@ def checkOptions(parser, options):
      os.mkdir(options.outDir)
 
 
-def badValue(filename, valuename, value, data):
+def unexpectedValue(filename, valuename, value, data):
   sys.stderr.write('Error: %s contains an unexpected value:\n'
                    '    %s = %s\n'
                    'Generally these problems can be resolved by discarding the '
-                   'file and re-running STRUCTURE for this value of K.'
+                   'file and re-running STRUCTURE for this value of K.\n'
                    % (filename, valuename, value))
   sys.exit(1)
 
+
+def clumppRegExFailure(filename, regexs, lineno, line, data):
+  sys.stderr.write('Error, clumpp generation for %s failed '
+                  'to match with any of the regular expressions:\n%s,\n'
+                  'on line number %d: %s\n'
+                  % (filename, ',\n'.join(regexs), lineno, line))
+  sys.exit(1)
+
+
+def clumppLineStructureFailure(filename, regex, lineno, line, data):
+  sys.stderr.write('Error, clumpp popfile generation failed\n'
+                   'Your file %s has unexpected line structure!\n'
+                   'Job failed '
+                   'to match the regular expression:\n%s\non line %d:\n%s\n'
+                   'Please verify your input file\'s characters '
+                   'and try again after making the correction.\n' %
+                   (filename, regex, lineno, line))
+  sys.exit(1)
+
+
+def clumppPriorPopInfoFailure(filename, data):
+  sys.stderr.write('Error, clumpp generation for %s failed: '
+                   'STRUCTURE was run using prior population information and '
+                   'it is not clear how to convert this into a stand alone '
+                   'Q matrix.\n' % filename)
+  sys.exit(1)
 
 
 def harvestFiles(data, options):
@@ -122,11 +149,12 @@ def harvestFiles(data, options):
     sys.exit(1)
   data.records = {} # key is K, value is an array
   for f in files:
-    run, errorString = hc.readFile(f, data, badValue)
+    try:
+      run, errorString = hc.readFile(f, data)
+    except hc.UnexpectedValue as e:
+      unexpectedValue(e.filename, e.valuename, e.value, e.data)
     if run is not None:
-      if run.k not in data.records:
-        data.records[run.k] = []
-      data.records[run.k].append(run)
+      data.records.setdefault(run.k, []).append(run)
     else:
       sys.stderr.write('Error, unable to extract results from file %s.\n' % f)
       sys.stderr.write('%s\n' % errorString)
@@ -216,8 +244,16 @@ def main():
   harvestFiles(data, options)
   hc.calculateMeansAndSds(data)
   if options.clumpp:
-    hc.clumppGeneration(options.resultsDir, options.outDir, data, failHandler)
-    hc.clumppPopFile(options.resultsDir, options.outDir, data, failHandler)
+    try:
+      hc.clumppGeneration(options.resultsDir, options.outDir, data)
+    except hc.ClumppRegEx as e:
+      clumppRegExFailure(e.filename, e.regexs, e.lineno, e.line, e.data)
+    except hc.ClumppPriorPopInfo as e:
+      clumppPriorPopInfoFailure(e.filename, data)
+    try:
+      hc.clumppPopFile(options.resultsDir, options.outDir, data)
+    except hc.ClumppLineStructure as e:
+      clumppLineStructureFailure(e.filename, e.regex, e.lineno, e.line, e.data)
   evannoMethod(data, options)
   hc.writeRawOutputToFile(os.path.join(options.outDir, 'summary.txt'), data)
 

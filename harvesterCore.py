@@ -57,8 +57,62 @@ import os
 import re
 import time
 
-__version__ = 'vA.1 March 2012' # alpha.number convention for core
+__version__ = 'vA.2 July 2014' # alpha.number convention for core
 EPSILON = 0.0000001 # for determining if a stdev ~ 0
+
+
+class HarvesterError(Exception): pass
+class HarvesterErrorDetail(HarvesterError):
+  def __init__(self, filename, valuename, value, data):
+    self.filename = filename
+    self.valuename = valuename
+    self.value = value
+    self.data = data
+class PriorPopulation(HarvesterError): pass
+class UnexpectedValue(HarvesterErrorDetail):
+  def __str__(self):
+    return repr('Error: One of your files, %s, contains an unexpected value:'
+                ' [%s = %s] '
+                'Generally these problems can be resolved by discarding the '
+                'file and re-running STRUCTURE for this value of K.' %
+                (self.filename, self.valuename, self.value))
+class ClumppRegEx(HarvesterError):
+  def __init__(self, filename, regexs, lineno, line, data):
+    self.filename = filename
+    self.regexs = regexs
+    self.lineno = lineno
+    self.line = line
+    self.data = data
+  def __str__(self):
+    expressions = ',\n'.join(self.regexs)
+    return repr('Error, clumpp generation for file %s failed to '
+                'match any of the regular expressions %s '
+                'line number:%d %s '
+                'Please verify your input file\'s characters and '
+                'try again after making a correction.' %
+                (self.filename, expressions, self.lineno, self.line))
+class ClumppLineStructure(HarvesterError):
+  def __init__(self, filename, regex, lineno, line, data):
+    self.filename = filename
+    self.regex = regex
+    self.lineno = lineno
+    self.line = line
+    self.data = data
+  def __str__(self):
+    return repr('Error, clumpp popfile generation failed. Your file %s '
+                'has an unexepected line structure! Job failed to match '
+                'the regular expression: %s on line number %d: %s' %
+                (self.filename, self.regex, self.lineno, self.line))
+class ClumppPriorPopInfo(HarvesterError):
+  def __init__(self, filename ,data):
+    self.filename = filename
+    self.data = data
+  def __str__(self):
+    return repr('Error, clumpp generation for file %s failed: '
+                'STRUCTURE was run using prior population information '
+                'and it is not clear how to convert his into a stand '
+                'alone Q matrix.' % self.filename)
+
 
 class Data:
   """ Data will be used to store variables in a fashion
@@ -94,7 +148,7 @@ class RunRecord:
     self.runNumber = -1
 
 
-def addAttribute(p, value, run, data, badValue):
+def addAttribute(p, value, run, data):
   """ add a particular attribute to the run object. p is a string with the type
   value is a string that contains the value to add, run is the run object, data
   is the data object and badValue is a function that takes the run name, the
@@ -104,48 +158,48 @@ def addAttribute(p, value, run, data, badValue):
     try:
       run.indivs = int(value)
     except ValueError:
-      badValue(run.name, 'individuals', value, data)
+      raise UnexpectedValue(run.name, 'individuals', value, data)
   elif p == 'loci':
     try:
       run.loci = int(value)
     except ValueError:
-      badValue(run.name, 'loci', value, data)
+      raise UnexpectedValue(run.name, 'loci', value, data)
   elif p == 'k':
     try:
       run.k = int(value)
     except ValueError:
-      badValue(run.name, 'populations assumed', value, data)
+      raise UnexpectedValue(run.name, 'populations assumed', value, data)
   elif p == 'burnin':
     try:
       run.burnin = int(value)
     except ValueError:
-      badValue(run.name, 'Burn-in period', value, data)
+      raise UnexpectedValue(run.name, 'Burn-in period', value, data)
   elif p == 'reps':
     try:
       run.reps = int(value)
     except ValueError:
-      badValue(run.name, 'Reps', value, data)
+      raise UnexpectedValue(run.name, 'Reps', value, data)
   elif p == 'lnprob':
     if value == 'nan':
-      badValue(run.name, 'Estimated Ln Prob of Data', value, data)
+      raise UnexpectedValue(run.name, 'Estimated Ln Prob of Data', value, data)
     try:
       run.estLnProb = float(value)
     except ValueError:
-      badValue(run.name, 'Estimated Ln Prob of Data', value, data)
+      raise UnexpectedValue(run.name, 'Estimated Ln Prob of Data', value, data)
   elif p == 'meanln':
     if value == 'meanln':
-      badValue(run.name, 'Estimated Ln Prob of Data', value, data)
+      raise UnexpectedValue(run.name, 'Estimated Ln Prob of Data', value, data)
     try:
       run.meanLlh = float(value)
     except ValueError:
-      badValue(run.name, 'Mean value of ln likelihood', value, data)
+      raise UnexpectedValue(run.name, 'Mean value of ln likelihood', value, data)
   elif p == 'varln':
     if value == 'nan':
-      badValue(run.name, 'Estimated Ln Prob of Data', value, data)
+      raise UnexpectedValue(run.name, 'Estimated Ln Prob of Data', value, data)
     try:
       run.varLlh = float(value)
     except ValueError:
-      badValue(run.name, 'Variance of ln likelihood', value, data)
+      raise UnexpectedValue(run.name, 'Variance of ln likelihood', value, data)
   else:
     sys.stderr.write('Error, %s unknown pattern type %s\n'
                      % (data.uniqueName, p))
@@ -227,55 +281,55 @@ def writeRawOutputToFile(filename, data):
   file.close()
 
 
-def readFile(filename, data, badValue):
+def readFile(filename, data):
   run = RunRecord()
   run.name = os.path.basename(filename)
   m = re.search(r'.*_(\d+)_f$', run.name)
   if m != None:
     run.runNumber = m.group(1)
-  file = open(filename, 'r')
   regExs = {'indivs' : r'^(\d+) individuals.*$',
-            'loci'   : r'^(\d+) loci.*$',
-            'k'      : r'^(\d+) populations assumed.*$',
-            'burnin' : r'^(\d+) Burn\-in period.*$',
-            'reps'   : r'^(\d+) Reps.*$',
-            # nan, inf
-            'lnprob' : r'^Estimated Ln Prob of Data\s+=\s+([\d.$nainf-]+).*$',
-            'meanln' : r'^Mean value of ln likelihood\s+=\s+([\d.$nainf-]+).*$',
-            'varln'  : r'^Variance of ln likelihood\s+=\s+([\d.$nainf-]+).*$',
+              'loci'   : r'^(\d+) loci.*$',
+              'k'      : r'^(\d+) populations assumed.*$',
+              'burnin' : r'^(\d+) Burn\-in period.*$',
+              'reps'   : r'^(\d+) Reps.*$',
+              # nan, inf
+              'lnprob' : r'^Estimated Ln Prob of Data\s+=\s+([\d.$nainf-]+).*$',
+              'meanln' : r'^Mean value of ln likelihood\s+=\s+([\d.$nainf-]+).*$',
+              'varln'  : r'^Variance of ln likelihood\s+=\s+([\d.$nainf-]+).*$',
             }
   pats = {}
   for r in regExs:
     pats[r] = re.compile(regExs[r])
   isDone = False
-  for line in file:
-    if isDone:
-      break
-    line = line.strip()
-    for p in pats:
-      m = re.match(pats[p], line)
-      if m != None:
-        addAttribute(p, m.group(1), run, data, badValue)
-        if p == 'varln':
-          isDone = True
+  with open(filename, 'r') as infile:
+    for line in infile:
+      if isDone:
+        break
+      line = line.strip()
+      for p in pats:
+        m = re.match(pats[p], line)
+        if m != None:
+          addAttribute(p, m.group(1), run, data)
+          if p == 'varln':
+            isDone = True
   return validateRecord(run)
 
 
-def clumppGeneration(inputDir, outputDir, data, failToSummary, isWeb=False):
-  regex1 = r'''^(\d+) # individual number
-         \s+(\S+) # Label
-         \s+(\S+) # %Miss
-         \s+([\-\d]+)\s+: # Pop, can be -9
-         \s+(.*?)$ # Inferred clusters'''
-  regex2 = r'''^(\d+) # individual number
-         \s+(\S+) # Label
-         \s+(\S+)\s+: # %Miss. if only 1 inferred cluster, then 1 is not printed
-         \s+(.*?)$ # Inferred clusters'''
+def clumppGeneration(inputDir, outputDir, data, isWeb=False):
+  regex1 = r'''^(\d+)                  # individual number
+         \s+(\S+)          # Label
+         \s+(\S+)          # %Miss
+         \s+([\-\d]+)\s+:  # Pop, can be -9
+         \s+(.*?)$         # Inferred clusters'''
+  regex2 = r'''^(\d+)              # individual number
+         \s+(\S+)      # Label
+         \s+(\S+)\s+:  # %Miss. if only 1 inferred cluster, then 1 is not printed
+         \s+(.*?)$     # Inferred clusters'''
   # regex2 also covers the new style of confidence intervals
   # following the standard values
-  regex3 = r'''^(\d+) # individual number
-         \s+(\S+)\s+: # %Miss
-         \s+([\d. ]*?)$ # Inferred clusters'''
+  regex3 = r'''^(\d+)                # individual number
+         \s+(\S+)\s+:    # %Miss
+         \s+([\d. ]*?)$  # Inferred clusters'''
   regexIntervals = r'\(\S+,\S+\)' # used to trim off the confidence intervals
   pats = []
   for r in [regex1, regex2, regex3]:
@@ -292,25 +346,26 @@ def clumppGeneration(inputDir, outputDir, data, failToSummary, isWeb=False):
           printing = False
           continue
         if line.startswith('Probability of being from assumed population | '):
-          if isWeb:
-            failToSummary(
-              'Error, clumpp generation failed',
-              'Your file <strong>%s</strong> shows STRUCTURE was '
-              'run using prior population information and it is not '
-              'clear how to convert this into a stand alone Q matrix.\n'
-              'Job %s failed. '
-              'Please verify your input file\'s characters '
-              'and try again after making the correction.\n'
-              'If you believe this is a bug you may email the author '
-              'and mention job %s'
-              % (r.name, data.uniqueName, data.uniqueName), data)
-          else:
-            failToSummary(
-              'Error, clumpp generation for %s failed: '
-              'STRUCTURE was run using prior population information and '
-              'it is not clear how to convert this into a stand alone '
-              'Q matrix.\n'
-              % (r.name))
+          raise ClumppPriorPopInfo(r.name, data)
+        # if isWeb:
+          # failToSummary(
+          #     'Error, clumpp generation failed',
+          #     'Your file <strong>%s</strong> shows STRUCTURE was '
+          #     'run using prior population information and it is not '
+          #     'clear how to convert this into a stand alone Q matrix.\n'
+          #     'Job %s failed. '
+          #     'Please verify your input file\'s characters '
+          #     'and try again after making the correction.\n'
+          #     'If you believe this is a bug you may email the author '
+          #     'and mention job %s'
+          #     % (r.name, data.uniqueName, data.uniqueName), data)
+          # else:
+          #   failToSummary(
+          #     'Error, clumpp generation for %s failed: '
+          #     'STRUCTURE was run using prior population information and '
+          #     'it is not clear how to convert this into a stand alone '
+          #     'Q matrix.\n'
+          #     % (r.name))
         d = line.split()
         if (d[0] == 'Label' and d[1] == '(%Miss)') or d[0] == '(%Miss)':
           printing = True
@@ -325,28 +380,30 @@ def clumppGeneration(inputDir, outputDir, data, failToSummary, isWeb=False):
           m2 = re.match(pats[1], line)
           m3 = re.match(pats[2], line)
           if m1 is None and m2 is None and m3 is None:
-            if isWeb:
-              failToSummary(
-                  'Error, clumpp generation failed',
-                  'Your file <strong>%s</strong> contains unexpected '
-                  'characters or formatting!\n'
-                  'Job %s failed '
-                  'to match any of the following regular expressions: '
-                  '<ul><li><pre>"%s"</pre></li>'
-                  '<li><pre>"%s"</pre></li><li><pre>"%s"</pre></li></ul>\n on '
-                  'line number %d:</p>\n <pre>%s</pre>\n'
-                  'Please verify your input file\'s characters '
-                  'and try again after making the correction.\n'
-                  'If you believe this is a bug you may email the author '
-                  'and mention job %s'
-                  % (r.name, data.uniqueName, regex1, regex2,
-                     regex3, lineno, line, data.uniqueName), data)
-            else:
-              failToSummary(
-                  'Error, clumpp generation for %s failed '
-                  'to match with any of the regular expressions:\n  "%s",\n  '
-                  '"%s",\n  "%s"\non line number %d: %s\n'
-                  % (r.name, regex1, regex2, regex3, lineno, line))
+            raise ClumppRegEx(r.name, [regex1, regex2, regex3],
+                              lineno, line, data)
+            # if isWeb:
+            #   failToSummary(
+            #       'Error, clumpp generation failed',
+            #       'Your file <strong>%s</strong> contains unexpected '
+            #       'characters or formatting!\n'
+            #       'Job %s failed '
+            #       'to match any of the following regular expressions: '
+            #       '<ul><li><pre>"%s"</pre></li>'
+            #       '<li><pre>"%s"</pre></li><li><pre>"%s"</pre></li></ul>\n on '
+            #       'line number %d:</p>\n <pre>%s</pre>\n'
+            #       'Please verify your input file\'s characters '
+            #       'and try again after making the correction.\n'
+            #       'If you believe this is a bug you may email the author '
+            #       'and mention job %s'
+            #       % (r.name, data.uniqueName, regex1, regex2,
+            #          regex3, lineno, line, data.uniqueName), data)
+            # else:
+            #   failToSummary(
+            #       'Error, clumpp generation for %s failed '
+            #       'to match with any of the regular expressions:\n  "%s",\n  '
+            #       '"%s",\n  "%s"\non line number %d: %s\n'
+            #       % (r.name, regex1, regex2, regex3, lineno, line))
           else:
             if m1 != None:
               f.write('%3d %3d %s %2d : %s\n'
@@ -364,7 +421,7 @@ def clumppGeneration(inputDir, outputDir, data, failToSummary, isWeb=False):
     f.close()
 
 
-def clumppPopFile(inputDir, outputDir, data, failToSummary, isWeb=False):
+def clumppPopFile(inputDir, outputDir, data):
   regex1 = r'''^(\d+): # Given Pop
          \s+([\d. ]*?) # All Inferred Cluster columns
          \s+(\d+)$ # # Number of Individuals'''
@@ -400,26 +457,27 @@ def clumppPopFile(inputDir, outputDir, data, failToSummary, isWeb=False):
         if printing:
           m1 = re.match(pats[0], line)
           if m1 is None:
-            if isWeb:
-              failToSummary(
-                  'Error, clumpp popfile generation failed',
-                  'Your file <strong>%s</strong> has unexpected '
-                  'line structure!\n'
-                  'Job %s failed '
-                  'to match the regular expression:\n<pre>%s</pre>\n'
-                  '<p>on line number %d:\n<pre>%s</pre>\n'
-                  'Please verify your input file\'s characters '
-                  'and try again after making the correction.'
-                  % (r.name, data.uniqueName, regex1, lineno, line), data)
-            else:
-              failToSummary(
-                  'Error, clumpp popfile generation failed\n'
-                  'Your file %s has unexpected line structure!\n'
-                  'Job failed '
-                  'to match the regular expression:\n%s\non this line:\n%s\n'
-                  'Please verify your input file\'s characters '
-                  'and try again after making the correction.\n\n'
-                  % (r.name, regex1, line))
+            raise ClumppLineStructure(r.name, regex1, lineno, line, data)
+            # if isWeb:
+            #   failToSummary(
+            #       'Error, clumpp popfile generation failed',
+            #       'Your file <strong>%s</strong> has unexpected '
+            #       'line structure!\n'
+            #       'Job %s failed '
+            #       'to match the regular expression:\n<pre>%s</pre>\n'
+            #       '<p>on line number %d:\n<pre>%s</pre>\n'
+            #       'Please verify your input file\'s characters '
+            #       'and try again after making the correction.'
+            #       % (r.name, data.uniqueName, regex1, lineno, line), data)
+            # else:
+            #   failToSummary(
+            #       'Error, clumpp popfile generation failed\n'
+            #       'Your file %s has unexpected line structure!\n'
+            #       'Job failed '
+            #       'to match the regular expression:\n%s\non this line:\n%s\n'
+            #       'Please verify your input file\'s characters '
+            #       'and try again after making the correction.\n\n'
+            #       % (r.name, regex1, line))
           else:
             f.write('%3d:' % (int(m1.group(1))))
             for i in xrange(2, len(m1.groups()) + 1):
