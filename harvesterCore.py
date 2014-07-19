@@ -5,8 +5,11 @@ March 2012
 Functions shared between the web and stand-alone versions
 of Structure Harvester.
 
-http://users.soe.ucsc.edu/~dearl/software/structureHarvester/
+http://www.structureharvester.com/
+https://github.com/dentearl/structureHarvester/
 http://taylor0.biology.ucla.edu/structureHarvester/
+http://users.soe.ucsc.edu/~dearl/software/structureHarvester/
+
 
 ##############################
 CITATION
@@ -233,9 +236,10 @@ def writeRawOutputToFile(filename, data):
   file = open(filename, 'w')
   file.write('# This document produced by structureHarvester core version %s\n'
              % __version__)
-  file.write('# http://users.soe.ucsc.edu/~dearl/struct_harvest\n')
+  file.write('# http://www.structureharvester.com/\n')
+  file.write('# https://github.com/dentearl/structureHarvester/\n')
   file.write('# http://taylor0.biology.ucla.edu/structureHarvester\n')
-  file.write('# https://github.com/dentearl/structureHarvester\n')
+  file.write('# http://users.soe.ucsc.edu/~dearl/software/structureHarvester\n')
   file.write('# Written by Dent Earl, dearl (a) soe ucsc edu.\n')
   file.write('# CITATION:\n# Earl, Dent A. and vonHoldt, Bridgett M. (2012)\n'
              '# STRUCTURE HARVESTER: a website and program for visualizing\n'

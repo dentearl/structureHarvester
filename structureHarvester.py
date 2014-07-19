@@ -1,10 +1,13 @@
-#!/usr/bin/env python2.6
+#!/usr/bin/env python
 """ structureHarvester
 2007-2014
 dent earl, dearl (a) soe ucsc edu
 
-http://users.soe.ucsc.edu/~dearl/software/structureHarvester/
+
+http://www.structureharvester.com/
+https://github.com/dentearl/structureHarvester/
 http://taylor0.biology.ucla.edu/structureHarvester/
+http://users.soe.ucsc.edu/~dearl/software/structureHarvester/
 
 ##############################
 CITATION
@@ -53,7 +56,7 @@ THE SOFTWARE.
 """
 import glob
 import harvesterCore as hc
-from optparse import OptionParser
+from argparse import ArgumentParser
 import os
 import re
 import sys
@@ -71,38 +74,38 @@ except TypeError:
                     % (sys.version_info[0], sys.version_info[1]))
 
 
-def initOptions(parser):
-   parser.add_option('--dir',dest='resultsDir',
-           type ='string', help='The structure Results/ directory.')
-   parser.add_option(
-       '--out',dest='outDir', type ='string',
-       help=('The out directory. If it does not exist, it will be created. '
-             'Output written to summary.txt'))
-   parser.add_option(
-       '--evanno',dest='evanno', action='store_true', default=False,
-       help=('If possible, performs the Evanno 2005 method. '
-             'Written to evanno.txt. default=%default'))
-   parser.add_option(
-       '--clumpp',dest='clumpp', action='store_true', default=False,
+def initializeArguments(parser):
+   parser.add_argument('--dir', dest='resultsDir', type=str,
+                       help='The structure Results/ directory.')
+   parser.add_argument(
+     '--out', dest='outDir', type=str,
+     help=('The out directory. If it does not exist, it will be created. '
+           'Output written to summary.txt'))
+   parser.add_argument(
+     '--evanno', action='store_true', default=False,
+     help=('If possible, performs the Evanno 2005 method. '
+           'Written to evanno.txt. default=%(default)s'))
+   parser.add_argument(
+       '--clumpp', action='store_true', default=False,
        help=('Generates one K*.indfile for each value of K run, '
-             'for use with CLUMPP. default=%default'))
+             'for use with CLUMPP. default=%(default)s'))
 
 
-def checkOptions(parser, options):
-   if not options.resultsDir:
+def checkArguments(parser, args):
+   if not args.resultsDir:
      parser.error('Error, specify --dir \n')
-   if not os.path.exists(options.resultsDir):
-     parser.error('Error, --dir %s does not exist!\n' % options.resultsDir)
-   if not os.path.isdir(options.resultsDir):
-     parser.error('Error, --dir %s is not a directory!\n' % options.resultsDir)
-   options.resultsDir = os.path.abspath(options.resultsDir)
-   if not options.outDir:
+   if not os.path.exists(args.resultsDir):
+     parser.error('Error, --dir %s does not exist!\n' % args.resultsDir)
+   if not os.path.isdir(args.resultsDir):
+     parser.error('Error, --dir %s is not a directory!\n' % args.resultsDir)
+   args.resultsDir = os.path.abspath(args.resultsDir)
+   if not args.outDir:
      parser.error('Error, specify --out \n')
-   if os.path.exists(options.outDir) and not os.path.isdir(options.outDir):
+   if os.path.exists(args.outDir) and not os.path.isdir(args.outDir):
      parser.error('Error, --out %s already exists but is not a directory!\n'
-                  % options.outDir)
-   if not os.path.exists(options.outDir):
-     os.mkdir(options.outDir)
+                  % args.outDir)
+   if not os.path.exists(args.outDir):
+     os.mkdir(args.outDir)
 
 
 def unexpectedValue(filename, valuename, value, data):
@@ -141,11 +144,11 @@ def clumppPriorPopInfoFailure(filename, data):
   sys.exit(1)
 
 
-def harvestFiles(data, options):
-  files = glob.glob(os.path.join(options.resultsDir, '*_f'))
+def harvestFiles(data, args):
+  files = glob.glob(os.path.join(args.resultsDir, '*_f'))
   if len(files) < 1:
     sys.stderr.write('Error, unable to locate any _f files in '
-             'the results directory %s' % options.resultsDir)
+             'the results directory %s' % args.resultsDir)
     sys.exit(1)
   data.records = {} # key is K, value is an array
   for f in files:
@@ -163,8 +166,8 @@ def harvestFiles(data, options):
   data.sortedKs.sort()
 
 
-def evannoMethod(data, options):
-  if not options.evanno:
+def evannoMethod(data, args):
+  if not args.evanno:
     return
   value = hc.evannoTests(data)
   if value is not None:
@@ -173,15 +176,17 @@ def evannoMethod(data, options):
     sys.stderr.write(value)
     sys.exit(1)
   hc.calculatePrimesDoublePrimesDeltaK(data)
-  writeEvannoTableToFile(data, options)
+  writeEvannoTableToFile(data, args)
 
 
-def writeEvannoTableToFile(data, options):
-  file = open(os.path.join(options.outDir, 'evanno.txt'), 'w')
+def writeEvannoTableToFile(data, args):
+  file = open(os.path.join(args.outDir, 'evanno.txt'), 'w')
   file.write('# This document produced by structureHarvester.py %s core %s\n'
              % (__version__, hc.__version__))
-  file.write('# http://users.soe.ucsc.edu/~dearl/struct_harvest\n')
-  file.write('# http://taylor0.biology.ucla.edu/struct_harvest\n')
+  file.write('# http://www.structureharvester.com/\n')
+  file.write('# https://github.com/dentearl/structureHarvester/\n')
+  file.write('# http://taylor0.biology.ucla.edu/structureHarvester\n')
+  file.write('# http://users.soe.ucsc.edu/~dearl/software/structureHarvester\n')
   file.write('# Written by Dent Earl, dearl (a) soe ucsc edu.\n')
   file.write('# CITATION:\n# Earl, Dent A. and vonHoldt, Bridgett M. (2012)\n'
              '# STRUCTURE HARVESTER: a website and program for visualizing\n'
@@ -227,35 +232,35 @@ def failHandler(message):
 
 
 def main():
-  usage = ('usage: %prog --dir=path/to/dir/ --out=path/to/dir/ [options]\n\n'
-           '%prog takes a STRUCTURE results directory (--dir) and an\n'
+  usage = ('usage: %(prog)s --dir=path/to/dir/ --out=path/to/dir/ [options]\n\n'
+           '%(prog)s takes a STRUCTURE results directory (--dir) and an\n'
            'output directory (--out will be created if it does not exist) '
            'and then\n'
            'depending on the other options selected harvests data from the '
            'results\n'
            'directory and performs the selected analyses')
   data = hc.Data()
-  parser = OptionParser(usage=usage,
-                        version='%prog ' + '%s core %s'
-                        % (__version__, hc.__version__))
-  initOptions(parser)
-  (options, args) = parser.parse_args()
-  checkOptions(parser, options)
-  harvestFiles(data, options)
+  parser = ArgumentParser(usage=usage,
+                          version='%(prog)s ' + '%s core %s'
+                          % (__version__, hc.__version__))
+  initializeArguments(parser)
+  args = parser.parse_args()
+  checkArguments(parser, args)
+  harvestFiles(data, args)
   hc.calculateMeansAndSds(data)
-  if options.clumpp:
+  if args.clumpp:
     try:
-      hc.clumppGeneration(options.resultsDir, options.outDir, data)
+      hc.clumppGeneration(args.resultsDir, args.outDir, data)
     except hc.ClumppRegEx as e:
       clumppRegExFailure(e.filename, e.regexs, e.lineno, e.line, e.data)
     except hc.ClumppPriorPopInfo as e:
       clumppPriorPopInfoFailure(e.filename, data)
     try:
-      hc.clumppPopFile(options.resultsDir, options.outDir, data)
+      hc.clumppPopFile(args.resultsDir, args.outDir, data)
     except hc.ClumppLineStructure as e:
       clumppLineStructureFailure(e.filename, e.regex, e.lineno, e.line, e.data)
-  evannoMethod(data, options)
-  hc.writeRawOutputToFile(os.path.join(options.outDir, 'summary.txt'), data)
+  evannoMethod(data, args)
+  hc.writeRawOutputToFile(os.path.join(args.outDir, 'summary.txt'), data)
 
 if __name__ == '__main__':
   main()
