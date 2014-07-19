@@ -319,7 +319,7 @@ def readFile(filename, data):
   return validateRecord(run)
 
 
-def clumppGeneration(inputDir, outputDir, data, isWeb=False):
+def clumppGeneration(inputDir, outputDir, data):
   regex1 = r'''^(\d+)                  # individual number
          \s+(\S+)          # Label
          \s+(\S+)          # %Miss
