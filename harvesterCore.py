@@ -351,25 +351,6 @@ def clumppGeneration(inputDir, outputDir, data):
           continue
         if line.startswith('Probability of being from assumed population | '):
           raise ClumppPriorPopInfo(r.name, data)
-        # if isWeb:
-          # failToSummary(
-          #     'Error, clumpp generation failed',
-          #     'Your file <strong>%s</strong> shows STRUCTURE was '
-          #     'run using prior population information and it is not '
-          #     'clear how to convert this into a stand alone Q matrix.\n'
-          #     'Job %s failed. '
-          #     'Please verify your input file\'s characters '
-          #     'and try again after making the correction.\n'
-          #     'If you believe this is a bug you may email the author '
-          #     'and mention job %s'
-          #     % (r.name, data.uniqueName, data.uniqueName), data)
-          # else:
-          #   failToSummary(
-          #     'Error, clumpp generation for %s failed: '
-          #     'STRUCTURE was run using prior population information and '
-          #     'it is not clear how to convert this into a stand alone '
-          #     'Q matrix.\n'
-          #     % (r.name))
         d = line.split()
         if (d[0] == 'Label' and d[1] == '(%Miss)') or d[0] == '(%Miss)':
           printing = True
@@ -386,28 +367,6 @@ def clumppGeneration(inputDir, outputDir, data):
           if m1 is None and m2 is None and m3 is None:
             raise ClumppRegEx(r.name, [regex1, regex2, regex3],
                               lineno, line, data)
-            # if isWeb:
-            #   failToSummary(
-            #       'Error, clumpp generation failed',
-            #       'Your file <strong>%s</strong> contains unexpected '
-            #       'characters or formatting!\n'
-            #       'Job %s failed '
-            #       'to match any of the following regular expressions: '
-            #       '<ul><li><pre>"%s"</pre></li>'
-            #       '<li><pre>"%s"</pre></li><li><pre>"%s"</pre></li></ul>\n on '
-            #       'line number %d:</p>\n <pre>%s</pre>\n'
-            #       'Please verify your input file\'s characters '
-            #       'and try again after making the correction.\n'
-            #       'If you believe this is a bug you may email the author '
-            #       'and mention job %s'
-            #       % (r.name, data.uniqueName, regex1, regex2,
-            #          regex3, lineno, line, data.uniqueName), data)
-            # else:
-            #   failToSummary(
-            #       'Error, clumpp generation for %s failed '
-            #       'to match with any of the regular expressions:\n  "%s",\n  '
-            #       '"%s",\n  "%s"\non line number %d: %s\n'
-            #       % (r.name, regex1, regex2, regex3, lineno, line))
           else:
             if m1 != None:
               f.write('%3d %3d %s %2d : %s\n'
@@ -462,26 +421,6 @@ def clumppPopFile(inputDir, outputDir, data):
           m1 = re.match(pats[0], line)
           if m1 is None:
             raise ClumppLineStructure(r.name, regex1, lineno, line, data)
-            # if isWeb:
-            #   failToSummary(
-            #       'Error, clumpp popfile generation failed',
-            #       'Your file <strong>%s</strong> has unexpected '
-            #       'line structure!\n'
-            #       'Job %s failed '
-            #       'to match the regular expression:\n<pre>%s</pre>\n'
-            #       '<p>on line number %d:\n<pre>%s</pre>\n'
-            #       'Please verify your input file\'s characters '
-            #       'and try again after making the correction.'
-            #       % (r.name, data.uniqueName, regex1, lineno, line), data)
-            # else:
-            #   failToSummary(
-            #       'Error, clumpp popfile generation failed\n'
-            #       'Your file %s has unexpected line structure!\n'
-            #       'Job failed '
-            #       'to match the regular expression:\n%s\non this line:\n%s\n'
-            #       'Please verify your input file\'s characters '
-            #       'and try again after making the correction.\n\n'
-            #       % (r.name, regex1, line))
           else:
             f.write('%3d:' % (int(m1.group(1))))
             for i in xrange(2, len(m1.groups()) + 1):
