@@ -1,5 +1,5 @@
 # Structure Harvester
-(c) 2007-2014 The Author, see LICENSE for details.
+(c) 2007-2022 The Author, see LICENSE for details.
 
 ## Author
 [Dent Earl](https://github.com/dentearl/)

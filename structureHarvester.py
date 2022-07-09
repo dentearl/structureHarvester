@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """ structureHarvester
-2007-2014
+2007-2022
 dent earl, dearl (a) soe ucsc edu
 
 
