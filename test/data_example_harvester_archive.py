@@ -1,9 +1,9 @@
-import test_harvesterCore as t_hc
+import harvesterCoreTestLib as hctl
 
-e = t_hc.Example('example_harvester_archive',
+e = hctl.Example('example_harvester_archive',
                  [
                    ('Admix_run_001_f',
-                    '''
+                    r'''
 
 
 ----------------------------------------------------
@@ -390,7 +390,7 @@ DATAFILE=\project_data,	OUTFILE=\Results_run_2,	NUMINDS=95,	NUMLOCI=18,	MISSING=
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_002_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -777,7 +777,7 @@ DATAFILE=\project_data,	OUTFILE=\Results_run_3,	NUMINDS=95,	NUMLOCI=18,	MISSING=
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_003_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -1164,7 +1164,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_47,	NUMINDS=95,	NUMLO
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_004_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -1553,7 +1553,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_6,	NUMINDS=95,	NUMLOC
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_005_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -1942,7 +1942,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_54,	NUMINDS=95,	NUMLO
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_006_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -2331,7 +2331,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_4,	NUMINDS=95,	NUMLOC
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_007_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -2722,7 +2722,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_61,	NUMINDS=95,	NUMLO
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_008_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -3113,7 +3113,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_66,	NUMINDS=95,	NUMLO
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_009_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -3504,7 +3504,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_62,	NUMINDS=95,	NUMLO
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_010_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -3897,7 +3897,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_68,	NUMINDS=95,	NUMLO
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_011_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -4290,7 +4290,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_70,	NUMINDS=95,	NUMLO
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_012_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -4683,7 +4683,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_73,	NUMINDS=95,	NUMLO
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_013_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -5078,7 +5078,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_75,	NUMINDS=95,	NUMLO
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_014_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -5473,7 +5473,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_76,	NUMINDS=95,	NUMLO
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_015_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -5868,7 +5868,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_15,	NUMINDS=95,	NUMLO
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_016_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -6265,7 +6265,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_17,	NUMINDS=95,	NUMLO
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_017_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -6662,7 +6662,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_83,	NUMINDS=95,	NUMLO
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_018_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -7059,7 +7059,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_84,	NUMINDS=95,	NUMLO
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_019_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -7458,7 +7458,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_20,	NUMINDS=95,	NUMLO
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_020_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -7857,7 +7857,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_21,	NUMINDS=95,	NUMLO
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_021_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -8256,7 +8256,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_92,	NUMINDS=95,	NUMLO
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_022_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -8657,7 +8657,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_22,	NUMINDS=95,	NUMLO
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_023_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -9058,7 +9058,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_23,	NUMINDS=95,	NUMLO
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_024_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -9459,7 +9459,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_98,	NUMINDS=95,	NUMLO
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_025_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -9862,7 +9862,7 @@ DATAFILE=\project_data,	OUTFILE=\Results\DAE Admix_run_103,	NUMINDS=95,	NUMLOCI=
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_026_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -10265,7 +10265,7 @@ DATAFILE=\project_data,	OUTFILE=\Results\DAE Admix_run_107,	NUMINDS=95,	NUMLOCI=
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_027_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -10668,7 +10668,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_108,	NUMINDS=95,	NUML
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_028_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -11073,7 +11073,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_109,	NUMINDS=95,	NUML
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_029_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -11478,7 +11478,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_112,	NUMINDS=95,	NUML
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_030_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -11883,7 +11883,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_113,	NUMINDS=95,	NUML
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_031_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -12290,7 +12290,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_31,	NUMINDS=95,	NUMLO
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_032_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -12697,7 +12697,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_118,	NUMINDS=95,	NUML
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix_run_033_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -13104,7 +13104,7 @@ DATAFILE= 34\project_data,	OUTFILE= \Results\DAE Admix_run_122,	NUMINDS=95,	NUML
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('K1ReRun_run_1_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -13491,7 +13491,7 @@ DATAFILE=/Users/jacobslab/Documents/DAE/Full_Data_Set/GobyK1ReRun/project_data,	
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('K1ReRun_run_2_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -13878,7 +13878,7 @@ DATAFILE=/Users/jacobslab/Documents/DAE/Full_Data_Set/GobyK1ReRun/project_data,	
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('K1ReRun_run_3_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------

@@ -12,15 +12,10 @@ import string
 import subprocess
 import sys
 import unittest
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]))))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 import harvesterCore as hc
+import harvesterCoreTestLib as hctl
 import test_data as td
-
-
-class Example(object):
-  def __init__(self, name, files):
-    self.name = name  # results directory name
-    self.files = files  # tuple, [0] filename [1] entirety of file
 
 
 def makeTempDirParent():
@@ -177,14 +172,13 @@ class ClumppPriorPopInfo(unittest.TestCase):
         os.mkdir(out)
       populateExample(example, tmpDirs[-1])
       files = glob(os.path.join(results, '*_f'))
+      data = hc.Data()
+      data.records = {} # key is K, value is an array
       for f in files:
-        data = hc.Data()
-        data.records = {} # key is K, value is an array
         run, errorString = hc.readFile(f, data)
         self.assertTrue(run is not None)
         data.records.setdefault(run.k, []).append(run)
-      data.sortedKs = data.records.keys()
-      data.sortedKs.sort()
+      data.sortedKs = sorted(data.records.keys())
       self.assertRaises(hc.ClumppPriorPopInfo, hc.clumppGeneration,
                         results, out, data)
     [self.addCleanup(removeDir, d) for d in tmpDirs]
@@ -206,14 +200,14 @@ class ClumppRegExFailure(unittest.TestCase):
         os.mkdir(out)
       populateExample(example, tmpDirs[-1])
       files = glob(os.path.join(results, '*_f'))
+      data = hc.Data()
+      data.records = {} # key is K, value is an array
       for f in files:
-        data = hc.Data()
-        data.records = {} # key is K, value is an array
         run, errorString = hc.readFile(f, data)
         self.assertTrue(run is not None)
         data.records.setdefault(run.k, []).append(run)
-      data.sortedKs = data.records.keys()
-      data.sortedKs.sort()
+
+      data.sortedKs = sorted(data.records.keys())
       self.assertRaises(hc.ClumppRegEx, hc.clumppGeneration,
                         results, out, data)
     [self.addCleanup(removeDir, d) for d in tmpDirs]
@@ -235,14 +229,13 @@ class ClumppLineStructureFailure(unittest.TestCase):
         os.mkdir(out)
       populateExample(example, tmpDirs[-1])
       files = glob(os.path.join(results, '*_f'))
+      data = hc.Data()
+      data.records = {} # key is K, value is an array
       for f in files:
-        data = hc.Data()
-        data.records = {} # key is K, value is an array
         run, errorString = hc.readFile(f, data)
         self.assertTrue(run is not None)
         data.records.setdefault(run.k, []).append(run)
-      data.sortedKs = data.records.keys()
-      data.sortedKs.sort()
+      data.sortedKs = sorted(data.records.keys())
       self.assertRaises(hc.ClumppLineStructure, hc.clumppPopFile,
                         results, out, data)
     [self.addCleanup(removeDir, d) for d in tmpDirs]
@@ -264,9 +257,9 @@ class UnexpectedValue(unittest.TestCase):
         os.mkdir(out)
       populateExample(example, tmpDirs[-1])
       files = glob(os.path.join(results, '*_f'))
+      data = hc.Data()
+      data.records = {} # key is K, value is an array
       for f in files:
-        data = hc.Data()
-        data.records = {} # key is K, value is an array
         self.assertRaises(hc.UnexpectedValue, hc.readFile, f, data)
     [self.addCleanup(removeDir, d) for d in tmpDirs]
     self.addCleanup(removeDirIfEmpty, tmpDirParent)

@@ -60,7 +60,7 @@ import os
 import re
 import time
 
-__version__ = 'vA.2 July 2014' # alpha.number convention for core
+__version__ = 'vB.1 July 2022' # alpha.number convention for core
 EPSILON = 0.0000001 # for determining if a stdev ~ 0
 
 
@@ -255,7 +255,7 @@ def writeRawOutputToFile(filename, data):
   file.write('# K\tReps\t'
         'mean est. LnP(Data)\t'
         'stdev est. LnP(Data)\n')
-  for i in xrange(0, len(data.sortedKs)):
+  for i in range(0, len(data.sortedKs)):
     k = data.sortedKs[i]
     file.write('%d\t%d\t%f\t%f\n' % (k, len(data.records[k]),
                                      data.estLnProbMeans[k],
@@ -340,48 +340,48 @@ def clumppGeneration(inputDir, outputDir, data):
       pats.append(re.compile(r, re.X))
   patInterval = re.compile(regexIntervals)
   for k in data.sortedKs:
-    f = open(os.path.join(outputDir, 'K%d.indfile' % k), 'w')
-    for r in data.records[k]:
-      inFile = open(os.path.join(inputDir, r.name), 'r')
-      printing = False
-      for lineno, line in enumerate(inFile, 1):
-        line = line.strip()
-        if line == '':
+    with open(os.path.join(outputDir, 'K%d.indfile' % k), 'w') as f:
+      for r in data.records[k]:
+        with open(os.path.join(inputDir, r.name), 'r') as inFile:
           printing = False
-          continue
-        if line.startswith('Probability of being from assumed population | '):
-          raise ClumppPriorPopInfo(r.name, data)
-        d = line.split()
-        if (d[0] == 'Label' and d[1] == '(%Miss)') or d[0] == '(%Miss)':
-          printing = True
-          continue
-        # find all confidence intervals and remove them
-        m = re.findall(patInterval, line)
-        for i in m:
-          line = line.replace(i, '')
-        line = line.strip()
-        if printing:
-          m1 = re.match(pats[0], line)
-          m2 = re.match(pats[1], line)
-          m3 = re.match(pats[2], line)
-          if m1 is None and m2 is None and m3 is None:
-            raise ClumppRegEx(r.name, [regex1, regex2, regex3],
-                              lineno, line, data)
-          else:
-            if m1 != None:
-              f.write('%3d %3d %s %2d : %s\n'
-                      % (int(m1.group(1)), int(m1.group(1)), m1.group(3),
-                         int(m1.group(4)), m1.group(5)))
-            elif m2 != None:
-              f.write('%3d %3d %s 1 : %s\n'
-                      % (int(m2.group(1)), int(m2.group(1)),
-                         m2.group(3), m2.group(4)))
-            elif m3 != None:
-              f.write('%3d %3d %s 1 : %s\n'
-                      % (int(m3.group(1)), int(m3.group(1)),
-                         m3.group(2), m3.group(3)))
-      f.write('\n')
-    f.close()
+          for lineno, line in enumerate(inFile, 1):
+            line = line.strip()
+            if line == '':
+              printing = False
+              continue
+            if line.startswith('Probability of being from assumed population | '):
+              raise ClumppPriorPopInfo(r.name, data)
+            d = line.split()
+            if (d[0] == 'Label' and d[1] == '(%Miss)') or d[0] == '(%Miss)':
+              printing = True
+              continue
+            # find all confidence intervals and remove them
+            m = re.findall(patInterval, line)
+            for i in m:
+              line = line.replace(i, '')
+            line = line.strip()
+            if printing:
+              m1 = re.match(pats[0], line)
+              m2 = re.match(pats[1], line)
+              m3 = re.match(pats[2], line)
+              if m1 is None and m2 is None and m3 is None:
+                # We failed to match any of the Clumpp Regular Exceptions
+                raise ClumppRegEx(r.name, [regex1, regex2, regex3],
+                                  lineno, line, data)
+              else:
+                if m1 != None:
+                  f.write('%3d %3d %s %2d : %s\n'
+                          % (int(m1.group(1)), int(m1.group(1)), m1.group(3),
+                             int(m1.group(4)), m1.group(5)))
+                elif m2 != None:
+                  f.write('%3d %3d %s 1 : %s\n'
+                          % (int(m2.group(1)), int(m2.group(1)),
+                             m2.group(3), m2.group(4)))
+                elif m3 != None:
+                  f.write('%3d %3d %s 1 : %s\n'
+                          % (int(m3.group(1)), int(m3.group(1)),
+                             m3.group(2), m3.group(3)))
+          f.write('\n')
 
 
 def clumppPopFile(inputDir, outputDir, data):
@@ -394,42 +394,50 @@ def clumppPopFile(inputDir, outputDir, data):
     pats.append(re.compile(r, re.X))
   for k in data.sortedKs:
     for r in data.records[k]:
-      inFile = open(os.path.join(inputDir, r.name), 'r')
-      printing = False
-      skipLine = False
-      workComplete = False
-      for lineno, line in enumerate(inFile, 1):
-        if workComplete:
-          continue
-        line = line.strip()
-        d = line.split()
-        if printing and line.startswith('--------------------'):
-          workComplete = True
-          printing = False
-          continue
-        if len(d) < 3:
-          continue
-        if d[0] == 'Given' and d[1] == 'Inferred' and d[2] == 'Clusters':
-          printing = True
-          skipLine = True
-          f = open(os.path.join(outputDir, 'K%d.popfile' % k), 'a')
-          continue
-        if skipLine:
-          skipLine = False
-          continue
-        if printing:
-          m1 = re.match(pats[0], line)
-          if m1 is None:
-            raise ClumppLineStructure(r.name, regex1, lineno, line, data)
-          else:
-            f.write('%3d:' % (int(m1.group(1))))
-            for i in xrange(2, len(m1.groups()) + 1):
-              f.write('\t%s' % m1.group(i))
-            f.write('\n')
-      if f != None:
-        f.write('\n')
-        f.close()
-        f = None
+      with open(os.path.join(inputDir, r.name), 'r') as inFile:
+        printing = False
+        skipLine = False
+        workComplete = False
+        for lineno, line in enumerate(inFile, 1):
+          if workComplete:
+            continue
+          line = line.strip()
+          d = line.split()
+          if printing and line.startswith('--------------------'):
+            workComplete = True
+            printing = False
+            continue
+          if len(d) < 3:
+            continue
+          if d[0] == 'Given' and d[1] == 'Inferred' and d[2] == 'Clusters':
+            printing = True
+            skipLine = True
+            maybeCloseF(f)
+            f = open(os.path.join(outputDir, 'K%d.popfile' % k), 'a')
+            continue
+          if skipLine:
+            skipLine = False
+            continue
+          if printing:
+            m1 = re.match(pats[0], line)
+            if m1 is None:
+              maybeCloseF(f)
+              raise ClumppLineStructure(r.name, regex1, lineno, line, data)
+            else:
+              f.write('%3d:' % (int(m1.group(1))))
+              for i in range(2, len(m1.groups()) + 1):
+                f.write('\t%s' % m1.group(i))
+              f.write('\n')
+        maybeCloseF(f)
+
+
+def maybeCloseF(f):
+  """ Helper function to try to clean up calls in clumppPopFile().
+  """
+  if f != None:
+    if not f.closed:
+      f.write('\n')
+      f.close()
 
 
 def evannoTests(data, isWeb=False):
@@ -486,7 +494,7 @@ def evannoTests(data, isWeb=False):
     out += '<p style="color:red;">Test: '
     out += 'The number of replicates per K > 1. FAIL</p>\n'
   # Standard Devation for a K (but not the first or last K) is zero
-  for i in xrange(1, len(data.sortedKs) - 1):
+  for i in range(1, len(data.sortedKs) - 1):
     k = data.sortedKs[i]
     if data.estLnProbStdevs[k] < EPSILON: # our epsilon
       fail = True
@@ -544,11 +552,11 @@ def calculatePrimesDoublePrimesDeltaK(data):
   data.LnPK = {}
   data.LnPPK = {}
   data.deltaK = {}
-  for i in xrange(1, len(data.sortedKs)):
+  for i in range(1, len(data.sortedKs)):
     thisK = data.sortedKs[i]
     prevK = data.sortedKs[i - 1]
     data.LnPK[thisK] = data.estLnProbMeans[thisK] - data.estLnProbMeans[prevK]
-  for i in xrange(1, len(data.sortedKs) - 1):
+  for i in range(1, len(data.sortedKs) - 1):
     prevK = data.sortedKs[i - 1]
     thisK = data.sortedKs[i]
     nextK = data.sortedKs[i + 1]

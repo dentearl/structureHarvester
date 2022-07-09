@@ -1,9 +1,9 @@
-import test_harvesterCore as t_hc
+import harvesterCoreTestLib as hctl
 
-e = t_hc.Example('clumppLineStructure',
+e = hctl.Example('clumppLineStructure',
                  [
                    ('Npop11_f',
-                    '''
+                    r'''
 
 
 ----------------------------------------------------
@@ -1878,7 +1878,7 @@ DATAFILE=NBR_introgress_loci.txt,	OUTFILE=Npop11,	NUMINDS=219,	NUMLOCI=168,	MISS
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Npop1_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -3748,7 +3748,7 @@ DATAFILE=NBR_introgress_loci.txt,	OUTFILE=Npop1,	NUMINDS=219,	NUMLOCI=168,	MISSI
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Npop21_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -5627,7 +5627,7 @@ DATAFILE=NBR_introgress_loci.txt,	OUTFILE=Npop21,	NUMINDS=219,	NUMLOCI=168,	MISS
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Npop31_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -7510,7 +7510,7 @@ DATAFILE=NBR_introgress_loci.txt,	OUTFILE=Npop31,	NUMINDS=219,	NUMLOCI=168,	MISS
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Npop35_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------

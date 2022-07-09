@@ -1,9 +1,9 @@
-import test_harvesterCore as t_hc
+import harvesterCoreTestLib as hctl
 
-e = t_hc.Example('clumppRegEx',
+e = hctl.Example('clumppRegEx',
                  [
                    ('TE_100BI_K2o1_f',
-                    '''
+                    r'''
 
 
 ----------------------------------------------------
@@ -59,7 +59,7 @@ Allele frequencies uncorrelated
 
 Inferred ancestry of individuals:
 Label (%Miss) :  Inferred clusters
-1     166a    (0)   :  0.204 0.796
+1     166a    (0)   banana  0.204 0.796
 2     166l    (4)   :  0.064 0.936
 3     166m    (4)   :  0.243 0.757
 4     166n    (0)   :  0.174 0.826
@@ -517,7 +517,7 @@ DATAFILE=/home/ddrg/zerjal/structure/D/TE_21_ok_data.txt,	OUTFILE=/home/ddrg/zer
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('TE_100BI_K2o2_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -1031,7 +1031,7 @@ DATAFILE=/home/ddrg/zerjal/structure/D/TE_21_ok_data.txt,	OUTFILE=/home/ddrg/zer
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('TE_100BI_K2o3_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -1545,7 +1545,7 @@ DATAFILE=/home/ddrg/zerjal/structure/D/TE_21_ok_data.txt,	OUTFILE=/home/ddrg/zer
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('TE_100BI_K2o4_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -2059,7 +2059,7 @@ DATAFILE=/home/ddrg/zerjal/structure/D/TE_21_ok_data.txt,	OUTFILE=/home/ddrg/zer
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('TE_100BI_K2o5_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -2572,8 +2572,8 @@ Values of parameters used in structure:
 DATAFILE=/home/ddrg/zerjal/structure/D/TE_21_ok_data.txt,	OUTFILE=/home/ddrg/zerjal/structure/results_ADM_100mBI/TE_100BI_K2o5,	NUMINDS=322,	NUMLOCI=21,	MISSING=-9,	LABEL=1,	POPDATA=0,	POPFLAG=0,	PHENOTYPE=0,	EXTRACOLS=0,	MAXPOPS=2,	BURNIN=100000,	NUMREPS=500000,	USEPOPINFO=0,	INFERALPHA=1,	INFERLAMBDA=1,	POPSPECIFICLAMBDA=0,	POPALPHAS=0,	COMPUTEPROB=1,	NOADMIX=0,	ADMBURNIN=100000,	UPDATEFREQ=50,	PRINTLIKES=0,	INTERMEDSAVE=0,	PRINTKLD=1,	PRINTNET=0,	PRINTLAMBDA=1,	ANCESTDIST=0,	NUMBOXES=1000,	ANCESTPINT=0.90000,	GENSBACK=1,	MIGRPRIOR=0.01000,	PRINTQHAT=0,	PRINTQSUM=1,	ALPHA=1.0000,	FREQSCORR=0,	FPRIORMEAN=0.0100,	FPRIORSD=0.0500,	ONEFST=0,	LAMBDA=1.0000,	UNIFPRIORALPHA=1,	ALPHAMAX=20.0000,	ALPHAPRIORA=0.0500,	ALPHAPRIORB=0.0010,	ALPHAPROPSD=0.0250,	STARTATPOPINFO=0,	RANDOMIZE=1,	SEED=1249303503,	LINKAGE=0,	METROFREQ=10,	REPORTHITRATE=0,	MARKOVPHASE=0,	PHASED=0,	PLOIDY=2,	PHASEINFO=0
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
-                   ('TE_100BI_K3o1_f',
-                    '''
+                   ('TE_100BI_K3o1_this_should_fail_because_par_f',
+                   r'''
 {\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fswiss\fcharset0 Arial;}}
 {\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\f0\fs20\par
 \par
@@ -3089,6 +3089,5 @@ Values of parameters used in structure:\par
 DATAFILE=F:\\tz\\STRUCTURE\\TE_ADM-100K\\project_data,\tab OUTFILE=F:\\tz\\STRUCTURE\\TE_ADM-100K\\500k\\Results\\500k_run_2,\tab NUMINDS=322,\tab NUMLOCI=21,\tab MISSING=-9,\tab LABEL=1,\tab POPDATA=0,\tab POPFLAG=0,\tab PHENOTYPE=0,\tab EXTRACOLS=0,\tab MAXPOPS=3,\tab BURNIN=100000,\tab NUMREPS=500000,\tab USEPOPINFO=0,\tab INFERALPHA=1,\tab INFERLAMBDA=1,\tab POPSPECIFICLAMBDA=0,\tab POPALPHAS=0,\tab COMPUTEPROB=1,\tab NOADMIX=0,\tab ADMBURNIN=2500,\tab UPDATEFREQ=1,\tab PRINTLIKES=0,\tab INTERMEDSAVE=0,\tab PRINTKLD=0,\tab PRINTNET=0,\tab PRINTLAMBDA=0,\tab ANCESTDIST=0,\tab NUMBOXES=1000,\tab ANCESTPINT=0.90000,\tab GENSBACK=2,\tab MIGRPRIOR=0.05000,\tab PRINTQHAT=0,\tab PRINTQSUM=0,\tab ALPHA=1.0000,\tab FREQSCORR=0,\tab FPRIORMEAN=0.1000,\tab FPRIORSD=0.1000,\tab ONEFST=0,\tab LAMBDA=1.0000,\tab UNIFPRIORALPHA=1,\tab ALPHAMAX=10.0000,\tab ALPHAPRIORA=1.0000,\tab ALPHAPRIORB=2.0000,\tab ALPHAPROPSD=0.0250,\tab STARTATPOPINFO=0,\tab RANDOMIZE=1,\tab SEED=1295995603,\tab LINKAGE=0,\tab METROFREQ=10,\tab REPORTHITRATE=0,\tab MARKOVPHASE=-1,\tab PHASED=0,\tab PLOIDY=2,\tab PHASEINFO=0\tab\par
 [STRAT parameters]:    NUMSIMSTATS=1000,\tab PHENOTYPECOL=-9,\tab POOLFREQ=10,\tab LOCUSxONLY=0,\tab EMERROR=0.00100,\tab MISSINGPHENO=-9,\tab\par
 }
- 
 '''),
 ])
