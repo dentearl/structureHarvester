@@ -59,7 +59,7 @@ Allele frequencies uncorrelated
 
 Inferred ancestry of individuals:
 Label (%Miss) :  Inferred clusters
-1     166a    (0)   banana  0.204 0.796
+1     166a    (0)   :  0.204 0.796
 2     166l    (4)   :  0.064 0.936
 3     166m    (4)   :  0.243 0.757
 4     166n    (0)   :  0.174 0.826
