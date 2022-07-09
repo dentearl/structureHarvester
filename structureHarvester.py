@@ -62,7 +62,7 @@ import re
 import sys
 import time
 
-__version__ = 'v0.7 Jul 2022'
+__version__ = 'v0.7 July 2022'
 EPSILON = 0.0000001 # for determining if a stdev ~ 0
 
 
