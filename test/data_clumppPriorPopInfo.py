@@ -1,9 +1,9 @@
-import test_harvesterCore as t_hc
+import harvesterCoreTestLib as hctl
 
-e = t_hc.Example('k40n100_UsedPopInfoGensBack2',
+e = hctl.Example('k40n100_UsedPopInfoGensBack2',
                  [
                    ('2.1.output_f',
-                    '''
+                    r'''
 
 
 ----------------------------------------------------
@@ -657,7 +657,7 @@ DATAFILE=/data5/ssim/bio/Structure/project_data,	OUTFILE=2.1.output,	NUMINDS=360
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('2.10.output_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -1311,7 +1311,7 @@ DATAFILE=/data5/ssim/bio/Structure/project_data,	OUTFILE=2.10.output,	NUMINDS=36
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('2.2.output_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -1965,7 +1965,7 @@ DATAFILE=/data5/ssim/bio/Structure/project_data,	OUTFILE=2.2.output,	NUMINDS=360
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('2.3.output_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -2619,7 +2619,7 @@ DATAFILE=/data5/ssim/bio/Structure/project_data,	OUTFILE=2.3.output,	NUMINDS=360
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('2.4.output_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -3273,7 +3273,7 @@ DATAFILE=/data5/ssim/bio/Structure/project_data,	OUTFILE=2.4.output,	NUMINDS=360
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('2.5.output_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -3927,7 +3927,7 @@ DATAFILE=/data5/ssim/bio/Structure/project_data,	OUTFILE=2.5.output,	NUMINDS=360
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('2.6.output_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -4581,7 +4581,7 @@ DATAFILE=/data5/ssim/bio/Structure/project_data,	OUTFILE=2.6.output,	NUMINDS=360
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('2.7.output_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -5235,7 +5235,7 @@ DATAFILE=/data5/ssim/bio/Structure/project_data,	OUTFILE=2.7.output,	NUMINDS=360
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('2.8.output_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -5889,7 +5889,7 @@ DATAFILE=/data5/ssim/bio/Structure/project_data,	OUTFILE=2.8.output,	NUMINDS=360
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('2.9.output_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------

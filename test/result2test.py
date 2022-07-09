@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """ result2test
 dent earl, dearl a soe ucsc edu
 2014
@@ -41,18 +41,18 @@ def checkArguments(args, parser):
 def processDir(directory, name):
   if name is None:
     name = os.path.basename(directory)
-  print 'import test_harvesterCore as t_hc\n'
-  print "e = t_hc.Example('%s'," % name
-  print "                 ["
+  print('import test_harvesterCore as t_hc\n')
+  print("e = t_hc.Example('%s'," % name)
+  print("                 [")
   for path in glob(os.path.join(directory, '*_f')):
     with open(path, 'r') as f:
-      print "                   ('%s'," % os.path.basename(path)
-      print "                    '''"
+      print("                   ('%s'," % os.path.basename(path))
+      print("                    '''")
       for line in f:
         line = line.strip()
-        print line
-      print "'''),"
-  print "])"
+        print(line)
+      print("'''),")
+  print("])")
 
 
 def main():

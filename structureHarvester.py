@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """ structureHarvester
 2007-2014
 dent earl, dearl (a) soe ucsc edu
@@ -62,7 +62,7 @@ import re
 import sys
 import time
 
-__version__ = 'v0.6.94 July 2014'
+__version__ = 'v0.7 July 2022'
 EPSILON = 0.0000001 # for determining if a stdev ~ 0
 
 
@@ -162,8 +162,7 @@ def harvestFiles(data, args):
       sys.stderr.write('Error, unable to extract results from file %s.\n' % f)
       sys.stderr.write('%s\n' % errorString)
       sys.exit(1)
-  data.sortedKs = data.records.keys()
-  data.sortedKs.sort()
+  data.sortedKs = sorted(data.records.keys())
 
 
 def evannoMethod(data, args):
@@ -203,7 +202,7 @@ def writeEvannoTableToFile(data, args):
   file.write('# K\tReps\t'
              'Mean LnP(K)\tStdev LnP(K)\t'
              'Ln\'(K)\t|Ln\'\'(K)|\tDelta K\n')
-  for i in xrange(0, len(data.sortedKs)):
+  for i in range(0, len(data.sortedKs)):
     k = data.sortedKs[i]
     if k in data.LnPK:
       LnPKstr = '%f' % data.LnPK[k]
@@ -240,9 +239,9 @@ def main():
            'results\n'
            'directory and performs the selected analyses')
   data = hc.Data()
-  parser = ArgumentParser(usage=usage,
-                          version='%(prog)s ' + '%s core %s'
-                          % (__version__, hc.__version__))
+  parser = ArgumentParser(usage=usage)
+  parser.add_argument('--version', action='version', version='%(prog)s ' +
+                      '%s core %s' % (__version__, hc.__version__))
   initializeArguments(parser)
   args = parser.parse_args()
   checkArguments(parser, args)

@@ -1,9 +1,9 @@
-import test_harvesterCore as t_hc
+import harvesterCoreTestLib as hctl
 
-e = t_hc.Example('LBroadhurst_okay',
+e = hctl.Example('LBroadhurst_okay',
                  [
                    ('Admix Pop info on_run_10_f',
-                    '''
+                    r'''
 
 
 ----------------------------------------------------
@@ -1208,7 +1208,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_11_f',
-                    '''
+                    r'''
 
 
 ----------------------------------------------------
@@ -2416,7 +2416,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_12_f',
-                    '''
+                    r'''
 
 
 ----------------------------------------------------
@@ -3624,7 +3624,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_13_f',
-                    '''
+                    r'''
 
 
 ----------------------------------------------------
@@ -4832,7 +4832,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_14_f',
-                    '''
+                    r'''
 
 
 ----------------------------------------------------
@@ -6040,7 +6040,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_15_f',
-                    '''
+                    r'''
 
 
 ----------------------------------------------------
@@ -7248,7 +7248,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_16_f',
-                    '''
+                    r'''
 
 
 ----------------------------------------------------
@@ -8459,7 +8459,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_17_f',
-                    '''
+                    r'''
 
 
 ----------------------------------------------------
@@ -9670,7 +9670,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_18_f',
-                    '''
+                    r'''
 
 
 ----------------------------------------------------
@@ -10881,7 +10881,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_19_f',
-                    '''
+                    r'''
 
 
 ----------------------------------------------------
@@ -12092,7 +12092,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_1_f',
-                    '''
+                    r'''
 
 
 ----------------------------------------------------
@@ -13265,7 +13265,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_20_f',
-                    '''
+                    r'''
 
 
 ----------------------------------------------------
@@ -14476,7 +14476,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_21_f',
-                    '''
+                    r'''
 
 
 ----------------------------------------------------
@@ -15690,7 +15690,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_22_f',
-                    '''
+                    r'''
 
 
 ----------------------------------------------------
@@ -16904,7 +16904,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_23_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -18118,7 +18118,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_24_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -19332,7 +19332,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_25_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -20546,7 +20546,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_26_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -21763,7 +21763,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_27_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -22980,7 +22980,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_28_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -24197,7 +24197,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_29_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -25414,7 +25414,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_2_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -26587,7 +26587,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_30_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -27804,7 +27804,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_31_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -29024,7 +29024,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_32_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -30244,7 +30244,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_33_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -31464,7 +31464,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_34_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -32684,7 +32684,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_35_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -33904,7 +33904,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_36_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -35127,7 +35127,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_37_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -36350,7 +36350,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_38_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -37573,7 +37573,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_39_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -38796,7 +38796,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_3_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -39969,7 +39969,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_40_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -41192,7 +41192,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_41_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -42418,7 +42418,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_42_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -43644,7 +43644,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_43_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -44870,7 +44870,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_44_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -46096,7 +46096,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_45_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -47322,7 +47322,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_46_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -48551,7 +48551,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_47_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -49780,7 +49780,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_48_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -51009,7 +51009,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_49_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -52238,7 +52238,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_4_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -53411,7 +53411,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_50_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -54640,7 +54640,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_51_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -55872,7 +55872,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_52_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -57104,7 +57104,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_53_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -58336,7 +58336,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_54_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -59568,7 +59568,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_55_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -60800,7 +60800,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_56_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -62035,7 +62035,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_57_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -63270,7 +63270,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_58_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -64505,7 +64505,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_59_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -65740,7 +65740,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_5_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -66913,7 +66913,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_60_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -68148,7 +68148,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_61_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -69386,7 +69386,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_62_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -70624,7 +70624,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_63_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -71862,7 +71862,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_64_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -73100,7 +73100,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_65_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -74338,7 +74338,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_66_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -75579,7 +75579,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_67_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -76820,7 +76820,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_68_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -78061,7 +78061,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_69_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -79302,7 +79302,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_6_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -80507,7 +80507,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_70_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -81748,7 +81748,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_71_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -82992,7 +82992,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_72_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -84236,7 +84236,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_73_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -85480,7 +85480,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_74_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -86724,7 +86724,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_75_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -87968,7 +87968,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_7_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -89173,7 +89173,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_8_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -90378,7 +90378,7 @@ DATAFILE=C:\Documents and Settings\Administrator\My Documents\Stucture analysis\
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('Admix Pop info on_run_9_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
