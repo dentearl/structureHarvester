@@ -1,9 +1,9 @@
-import test_harvesterCore as t_hc
+import harvesterCoreTestLib as hctl
 
-e = t_hc.Example('readFileUnexpectedValue',
+e = hctl.Example('readFileUnexpectedValue',
                  [
                    ('20k20knoadmixnoprior_run_112_f',
-                    '''
+                    r'''
 
 
 ----------------------------------------------------
@@ -1400,7 +1400,7 @@ DATAFILE=C:\Kirstens Files\Lorna\Lorna28pop2col\Lorna27Pop2col\project_data,	OUT
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('20k20knoadmixnoprior_run_27_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
@@ -2785,7 +2785,7 @@ DATAFILE=C:\Kirstens Files\Lorna\Lorna28pop2col\Lorna27Pop2col\project_data,	OUT
 [STRAT parameters]:    NUMSIMSTATS=1000,	PHENOTYPECOL=-9,	POOLFREQ=10,	LOCUSxONLY=0,	EMERROR=0.00100,	MISSINGPHENO=-9,
 '''),
                    ('20k20knoadmixnoprior_run_86_f',
-                    '''
+                   r'''
 
 
 ----------------------------------------------------
