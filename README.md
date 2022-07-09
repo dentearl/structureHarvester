@@ -5,7 +5,7 @@
 [Dent Earl](https://github.com/dentearl/)
 
 ## Dependencies
-* Python version 2.5 < x < 3.0
+* Python3
 
 ## Installation
 1. Download or <code>clone</code> the package.
